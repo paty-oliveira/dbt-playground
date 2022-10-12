@@ -1,6 +1,7 @@
 # Data Modelling with dbt
 
-This repository contains dbt projects that I use to improve my data modelling skills.
+The goal of having this playground here is to improve my data analysis and modeling skills focusing mainly on dbt. It will be also a space to explore the most recent dbt features and modeling techniques.
+
 
 ## Projects:
 
