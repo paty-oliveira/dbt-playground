@@ -1,0 +1,36 @@
+version: 2
+
+seeds:
+  - name: sales_people
+    description: "Raw data about sales partnerships on GetGround."
+    columns:
+      - name: name
+        description: "The name of sales partner."
+        tests:
+          - unique
+          - not_null
+          - accepted_values:
+                values: [
+                  "Orange",
+                  "Apple",
+                  "Lion",
+                  "Tree",
+                  "Root",
+                  "Sky",
+                  "Cloud",
+                  "Horiz",
+                  "Leaf",
+                  "Daisy",
+                  "Tulip",
+                  "Fig"
+                ]
+      - name: country
+        description: "The country where sales partner is based on."
+        tests:
+          - not_null
+          - accepted_values:
+                values: [
+                  "Singapore",
+                  "HongKong",
+                  "UK"
+                ]

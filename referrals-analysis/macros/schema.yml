@@ -1,0 +1,46 @@
+version: 2
+
+macros:
+  - name: generate_schema_name
+    description: >
+        This macro overrides the default dbt macro of the same name. By default, dbt generates
+        database schema names by suffixing the user's default schema (in their profiles.yml) with
+        the schema name passed to the model. Since we don't want to name our schemas in this way,
+        we are overriding that behaviour by including this macro. See below link for more info:
+
+        https://docs.getdbt.com/docs/building-a-dbt-project/building-models/using-custom-schemas/
+    arguments:
+      - name: custom_schema_name
+        type: string
+        description: "Custom schema name."
+
+  - name: referrals_report
+    description: >
+      This macro contains the SQL statement to generate referrals report based on the referrals's
+      status and outbound flag. This avoids code duplication accross multiple data models.
+      Example:
+        - To generate a referral report model about non-upsell referrals with succeeded status:
+        - Arguments:
+          - referral_status = 'succeeded'
+          - outbound_status = false
+    arguments:
+      - name: referral_status
+        type: string
+        description: "Referral's status."
+      - name: outbound_status
+        type: boolean
+        description: >
+          is `true` when GetGround refer a customer to a partner (upsell). In this case, the
+          partner pays a commission to GetGround.
+          is `false` when a partner refer a customer to GetGround. In this case, GetGround pays
+          a commission to partner.
+
+  - name: convert_unix_nano_to_timestamp
+    description: "This macro converts datetimes in Unix nano format to timestamp with time zone."
+    arguments:
+      - name: input_unix
+        type: string
+        description: "Column that contains datetime in unix nano format."
+      - name: column_name
+        type: string
+        description: "Name for the new datetime column."

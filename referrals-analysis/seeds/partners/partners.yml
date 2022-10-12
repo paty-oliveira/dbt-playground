@@ -1,0 +1,62 @@
+version: 2
+
+seeds:
+  - name: partners
+    config:
+      column_types:
+        id: integer
+        created_at: varchar
+        updated_at: varchar
+        partner_type: varchar
+        lead_sales_contact: varchar
+    description: "Raw data about individual referrals's partners on GetGround."
+    columns:
+      - name: id
+        description: "Unique identifier of partners - primary key."
+        tests:
+          - not_null
+          - unique
+      - name: created_at
+        description: "Timestamp in Unix nano format, which the partner was created on the system."
+        tests:
+          - not_null
+      - name: updated_at
+        description: "Timestamp in Unix nano format, which the partner was updated on the system."
+        tests:
+          - not_null
+      - name: partner_type
+        description: "Classification of the partner."
+        tests:
+          - not_null
+          - accepted_values:
+                values: [
+                  "Agent",
+                  "IFA",
+                  "Developer",
+                  "Other",
+                  "Influencer",
+                  "Management company",
+                  "Lender",
+                  "Insurer"
+                ]
+      - name: lead_sales_contact
+        description: "The name of sales partner."
+        tests:
+          - not_null
+          - accepted_values:
+                values: [
+                  "Orange",
+                  "Apple",
+                  "Lion",
+                  "Tree",
+                  "Root",
+                  "Sky",
+                  "Cloud",
+                  "Horiz",
+                  "Leaf",
+                  "Daisy",
+                  "Tulip",
+                  "Fig",
+                  "0",
+                  "Potato"
+                ]

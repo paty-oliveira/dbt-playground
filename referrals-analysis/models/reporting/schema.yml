@@ -1,0 +1,110 @@
+version: 2
+
+models:
+  - name: referrals_succeeded
+    description: >
+      Report model that can be used on reports/dashboards to analyze the referrals with successful
+      status.
+    columns:
+      - name: lead_sales_name
+        description: "The name of sales partner."
+      - name: partner_country
+        description: "The country where sales partner is based on."
+      - name: partner_type
+        description: "Classification of the partner."
+      - name: total_referrals_by_partner
+        description: "Total number of referrals aggregated by partner_id."
+        tests:
+          - not_null
+      - name: total_referrals_by_consultant
+        description: "Total number of referrals aggregated by consultant_id."
+        tests:
+          - not_null
+      - name: total_companies_referred
+        description: "Total number companied referred."
+        tests:
+          - not_null
+      - name: created_at
+        description: "Timestamp which the referral was created on the system."
+        tests:
+          - not_null
+      - name: updated_at
+        description: "Timestamp which the referral changed the status on the system."
+        tests:
+          - not_null
+      - name: ingested_at
+        description: "Timestamp which the record was ingested on."
+        tests:
+          - not_null
+
+  - name: referrals_pending
+    description: >
+      Report model that can be used on reports/dashboards to analyze the referrals with pending
+      status.
+    columns:
+      - name: lead_sales_name
+        description: "The name of sales partner."
+      - name: partner_country
+        description: "The country where sales partner is based on."
+      - name: partner_type
+        description: "Classification of the partner."
+      - name: total_referrals_by_partner
+        description: "Total number of referrals aggregated by partner_id."
+        tests:
+          - not_null
+      - name: total_referrals_by_consultant
+        description: "Total number of referrals aggregated by consultant_id."
+        tests:
+          - not_null
+      - name: total_companies_referred
+        description: "Total number companied referred."
+        tests:
+          - not_null
+      - name: created_at
+        description: "Timestamp which the referral was created on the system."
+        tests:
+          - not_null
+      - name: updated_at
+        description: "Timestamp which the referral changed the status on the system."
+        tests:
+          - not_null
+      - name: ingested_at
+        description: "Timestamp which the record was ingested on."
+        tests:
+          - not_null
+
+  - name: referrals_disinterested
+    description: >
+      Report model that can be used on reports/dashboards to analyze the referrals with disinterested
+      status.
+    columns:
+      - name: lead_sales_name
+        description: "The name of sales partner."
+      - name: partner_country
+        description: "The country where sales partner is based on."
+      - name: partner_type
+        description: "Classification of the partner."
+      - name: total_referrals_by_partner
+        description: "Total number of referrals aggregated by partner_id."
+        tests:
+          - not_null
+      - name: total_referrals_by_consultant
+        description: "Total number of referrals aggregated by consultant_id."
+        tests:
+          - not_null
+      - name: total_companies_referred
+        description: "Total number companied referred."
+        tests:
+          - not_null
+      - name: created_at
+        description: "Timestamp which the referral was created on the system."
+        tests:
+          - not_null
+      - name: updated_at
+        description: "Timestamp which the referral changed the status on the system."
+        tests:
+          - not_null
+      - name: ingested_at
+        description: "Timestamp which the record was ingested on."
+        tests:
+          - not_null

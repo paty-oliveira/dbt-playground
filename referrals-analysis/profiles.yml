@@ -1,0 +1,12 @@
+referrals-analysis:
+  target: dev
+  outputs:
+    dev:
+      type: postgres
+      threads: 1
+      host: localhost
+      port: 5432
+      user: dbt
+      pass: password1
+      dbname: referrals
+      schema: public

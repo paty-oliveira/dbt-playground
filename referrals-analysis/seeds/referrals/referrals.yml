@@ -1,0 +1,65 @@
+version: 2
+
+seeds:
+  - name: referrals
+    config:
+      column_types:
+        id: integer
+        created_at: varchar
+        updated_at: varchar
+        company_id: integer
+        partner_id: integer
+        consultant_id: integer
+        status: varchar
+        is_outbound: varchar
+    description: "Raw data about all referrals's transactions on GetGround."
+    columns:
+      - name: id
+        description: "Unique identifier of referrals - primary key."
+        tests:
+          - not_null
+          - unique
+      - name: created_at
+        description: "Timestamp in Unix nano format, which the referral was created on the system."
+        tests:
+          - not_null
+      - name: updated_at
+        description: >
+          Timestamp in Unix nano format, which the referral changed the status on the system.
+        tests:
+          - not_null
+      - name: company_id
+        description: "Unique identifier of a company - foreign key."
+        tests:
+          - not_null
+      - name: partner_id
+        description: "Unique identifier of a partner - foreign key."
+        tests:
+          - not_null
+      - name: consultant_id
+        description: "Unique identifier of a consultant - foreign key."
+        tests:
+          - not_null
+      - name: status
+        description: "Referral's status."
+        tests:
+          - not_null
+          - accepted_values:
+                values: [
+                  "successful",
+                  "pending",
+                  "disinterested"
+                ]
+      - name: is_outbound
+        description: >
+          is `1` when GetGround refer a customer to a partner (upsell). In this case, the
+          partner pays a commission to GetGround.
+          is `0` when a partner refer a customer to GetGround. In this case, GetGround pays
+          a commission to partner.
+        tests:
+          - not_null
+          - accepted_values:
+                values: [
+                  "0",
+                  "1"
+                ]

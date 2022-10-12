@@ -1,0 +1,182 @@
+version: 2
+
+models:
+  - name: stg_sales_people
+    description: "Staging model that contains information about sales partnerships."
+    columns:
+      - name: id
+        description: "Unique identifier based on partner name and country columns."
+        tests:
+          - not_null
+          - unique
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: text
+      - name: lead_sales_name
+        description: "The name of lead sales partnership."
+        tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: text
+      - name: country
+        description: "The country where sales partner is based on."
+        tests:
+          - not_null
+          - accepted_values:
+                values: [
+                  "United Kingdom",
+                  "Hong Kong",
+                  "Singapore"
+                ]
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: text
+      - name: ingested_at
+        description: "Timestamp which the record was ingested on."
+        tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: timestamp with time zone
+
+  - name: stg_partners
+    description: "Staging model that contains information about partners."
+    columns:
+      - name: id
+        description: "Unique identifier of the partner - primary key."
+        tests:
+          - not_null
+          - unique
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: integer
+      - name: partner_type
+        description: "Classification of the partner."
+        tests:
+          - not_null
+          - accepted_values:
+                values: [
+                  "Agent",
+                  "Independent Financial Adviser",
+                  "Developer",
+                  "Other",
+                  "Influencer",
+                  "Management Company",
+                  "Lender",
+                  "Insurer"
+                ]
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: text
+      - name: lead_sales_name
+        description: "The name of sales partner."
+        tests:
+          - not_null
+          - accepted_values:
+                values: [
+                  "Orange",
+                  "Apple",
+                  "Lion",
+                  "Tree",
+                  "Root",
+                  "Sky",
+                  "Cloud",
+                  "Horiz",
+                  "Leaf",
+                  "Daisy",
+                  "Tulip",
+                  "Fig",
+                  "0",
+                  "Potato"
+                ]
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: text
+      - name: created_at
+        description: "Timestamp which the partner was created on the system."
+        tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: timestamp with time zone
+      - name: updated_at
+        description: "Timestamp which the partner was updated on the system."
+        tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: timestamp with time zone
+      - name: ingested_at
+        description: "Timestamp which the record was ingested on."
+        tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: timestamp with time zone
+
+  - name: stg_referrals
+    description: >
+      Staging model that contains information about referrals made by partners to GetGround,
+      and referrals made by GetGround to partners.
+    columns:
+      - name: id
+        description: "Unique identifier of referrals - primary key."
+        tests:
+          - not_null
+          - unique
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: integer
+      - name: company_id
+        description: "Unique identifier of a company - foreign key."
+        tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: integer
+      - name: partner_id
+        description: "Unique identifier of a partner - foreign key."
+        tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: integer
+      - name: consultant_id
+        description: "Unique identifier of a consultant - foreign key."
+        tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: integer
+      - name: status
+        description: "Referral's status."
+        tests:
+          - not_null
+          - accepted_values:
+                values: [
+                  "successful",
+                  "pending",
+                  "disinterested"
+                ]
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: text
+      - name: is_outbound
+        description: >
+          is `true` when GetGround refer a customer to a partner (upsell). In this case, the
+          partner pays a commission to GetGround.
+          is `false` when a partner refer a customer to GetGround. In this case, GetGround pays
+          a commission to partner.
+        tests:
+          - not_null
+          - accepted_values:
+                values: [
+                  "true",
+                  "false"
+                ]
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: boolean
+      - name: created_at
+        description: "Timestamp which the referral was created on the system."
+        tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: timestamp with time zone
+      - name: updated_at
+        description: "Timestamp which the referral changed the status on the system."
+        tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: timestamp with time zone
+      - name: ingested_at
+        description: "Timestamp which the record was ingested on."
+        tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: timestamp with time zone
