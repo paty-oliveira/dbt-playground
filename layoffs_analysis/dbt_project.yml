@@ -1,8 +1,8 @@
-name: 'layoffs'
+name: 'layoffs_analysis'
 version: '1.0.0'
 config-version: 2
 
-profile: 'layoffs'
+profile: 'layoffs_analysis'
 
 model-paths: ["models"]
 analysis-paths: ["analyses"]

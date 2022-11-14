@@ -1,0 +1,10 @@
+layoffs_analysis:
+  target: dev
+  outputs:
+    dev:
+      type: bigquery
+      method: service-account
+      project: dbt-playground-368616
+      dataset: raw
+      threads: 1
+      keyfile: /Users/patricia-oliveira/Desktop/dbt-playground-368616-53ea549c2d23.json
