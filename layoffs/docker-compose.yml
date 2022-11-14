@@ -1,0 +1,13 @@
+version: '3.4'
+
+services:
+    postgres:
+        image: postgres
+        container_name: postgres
+        restart: always
+        environment:
+          POSTGRES_USER: dbt
+          POSTGRES_PASSWORD: password1
+          POSTGRES_DB: layoffs
+        ports:
+          - 5432:5432

@@ -5,4 +5,5 @@ The goal of having this playground here is to improve my data analysis and model
 
 ## Projects:
 
--  [Analysis of referrals on Real Estate business](./referrals-analysis/)
+- [Analysis of referrals on Real Estate business](./referrals-analysis/)
+- [Analysis of Layoffs in Tech companies](./layoffs/)
