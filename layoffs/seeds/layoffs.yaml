@@ -1,0 +1,35 @@
+version: 2
+
+seeds:
+  - name: layoffs
+    config:
+      column_types:
+        company: varchar
+        location: varchar
+        industry: varchar
+        total_laid_off: integer
+        percentage: decimal
+        date: date
+        funds_raised: decimal
+        stage: varchar
+        country: varchar
+    description: "Dataset containing information about layoffs in tech industry. Downloaded from Kaggle platform."
+    columns:
+      - name: company
+        description: "Name of the company"
+      - name: location
+        description: "Location of the company."
+      - name: industry
+        description: "Type of industry."
+      - name: total_laid_off
+        description: "Number of employees laid off."
+      - name: percentage
+        description: "Percentage of employees laid off."
+      - name: date
+        description: "Date of layoff."
+      - name: funds_raised
+        description: "Funds raised by the company (in Millions $)."
+      - name: stage
+        description: "Stage of funding."
+      - name: country
+        description: "Country name."
