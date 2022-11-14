@@ -16,5 +16,13 @@ clean-targets:
   - "target"
   - "dbt_packages"
 
+models:
+  layoffs:
+    staging:
+      +schema: staging
+      +materialized: view
+      +tags: staging
+
 seeds:
-  +schema: raw
+  layoffs:
+    +schema: raw
