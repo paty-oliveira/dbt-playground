@@ -230,6 +230,7 @@ venv/
 ENV/
 env.bak/
 venv.bak/
+playground-env/
 
 # Spyder project settings
 .spyderproject
