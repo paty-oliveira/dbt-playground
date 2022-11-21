@@ -7,6 +7,4 @@ layoffs_analysis:
       project: dbt-playground-368616
       dataset: raw
       threads: 1
-      dataproc_region: EU
-      gcs_bucket: python-model-test
       keyfile: /Users/patricia-oliveira/Desktop/dbt-playground-368616-53ea549c2d23.json
