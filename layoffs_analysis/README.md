@@ -1,9 +1,5 @@
 # Analysis of Layoff in Tech industry
 
-## Goal
-The goal of this project is to start using Python models for data modeling. For that, I chose a trendy
-topic in the Tech industry - layoffs.
-
 ## Context
 Tech firms around the globe are fighting the economic slowdown. The slow consumer spending, higher
 interest rates by central banks and strong dollars overseas are hinting toward a possible recession and
@@ -22,3 +18,27 @@ The data availability is from when COVID-19 was declared as a pandemic i.e. 11 M
 
 ## Data Source
 The source of the layoff dataset is [Kaggle](https://www.kaggle.com/datasets/swaptr/layoffs-2022). Startup layoffs as reported on Layoffs.fyi from COVID (11 March 2020) to today.
+
+## Technologies
+- Database: BigQuery
+- Data Transformation Tool: dbt
+
+## Analysis
+Based on analysis I found in Kaggle, these are the transformations that will be applied on the staging model:
+
+- `industry`, `total_laid_off`, `percentage_laid_off`, `stage` and `funds_raised` columns contain null values
+    - `industry` - Convert NaN to 'Unknown'
+    - `total_laid_off` - Convert NaN to 0
+    - `percentage_laid_off` - Convert NaN to 0
+    - `stage` - Convert NaN to 'Unknown'
+    - `funds_raised` - Convert NaN to 0
+- Data types conversions:
+    - `company` - VARCHAR
+    - `location` - VARCHAR
+    - `total_laid_off` - INTEGER
+    - `percentage_laid_off` - FLOAT
+    - `date` - TIMESTAMP
+    - `stage` - VARCHAR
+    - `country` - VARCHAR
+    - `funds_raised` - FLOAT
+- `location` - Convert 'SF Bay Area' to 'San Francisco'
