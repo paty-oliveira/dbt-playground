@@ -59,8 +59,11 @@ it represents.  It has the same granularity, but the columns have been renamed o
 
 
 ## Marts models
-- `layoffs_by_industry`
-- `layoffs_by_country`
-- `layoffs_by_funding_stage`
+- `layoffs_by_industry` is the model that aggregates the number of layoffs by industry.
+- `layoffs_by_country` is the model that aggregates the number of layoffs by country.
+- `layoffs_by_funding_stage`  is the model that aggregates the number of layoffs by funding stage.
+
 
 ## Data Lineage
+
+![](./imgs/dag.png)
