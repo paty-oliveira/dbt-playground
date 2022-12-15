@@ -5,7 +5,7 @@ seeds:
     description: "Dataset containing information about layoffs in tech industry. Downloaded from Kaggle platform."
     columns:
       - name: company
-        description: "Name of the company"
+        description: "Name of the company."
       - name: location
         description: "Location of the company."
       - name: industry
@@ -21,4 +21,4 @@ seeds:
       - name: stage
         description: "Stage of funding."
       - name: country
-        description: "Country name."
+        description: "Country name where the company is based on."

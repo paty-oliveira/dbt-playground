@@ -46,3 +46,18 @@ Based on analysis I found in Kaggle, these are the transformations that will be 
 - `location` - Convert 'SF Bay Area' to 'San Francisco'
 - Generate an auto-incrementing identifier AS `id`
 - Add `ingested_at` column that represents the timestamp at which the row was ingested by dbt.
+
+
+### Business Metrics
+Based on the operational data, I divided my analysis based on industry, country and stage. This
+will allow seeing the number of layoffs by industry, country and company stage.
+
+
+## Staging models
+
+
+
+## Marts models
+
+
+## Data Lineage

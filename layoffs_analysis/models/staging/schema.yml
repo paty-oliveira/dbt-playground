@@ -1,0 +1,28 @@
+version: 2
+
+models:
+  - name: stg_layoffs
+    description: "Staging model containing cleaned information about layoffs in tech industry."
+    columns:
+      - name: id
+        description: "Incremental unique identifier of each row."
+      - name: company_name
+        description: "Name of the company."
+      - name: industry
+        description: "Type of industry."
+      - name: total_laid_off
+        description: "Number of employees laid off."
+      - name: percentage_laid_off
+        description: "Percentage of employees laid off."
+      - name: funds_raised
+        description: "Funds raised by the company (in Millions $)."
+      - name: stage
+        description: "Stage of funding."
+      - name: location
+        description: "Location of the company."
+      - name: country
+        description: "Country name where the company is based on."
+      - name: laid_off_at
+        description: "Date of layoff."
+      - name: ingested_at
+        description: "Timestamp which the record was ingested on."
