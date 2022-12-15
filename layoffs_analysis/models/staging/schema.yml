@@ -6,23 +6,58 @@ models:
     columns:
       - name: id
         description: "Incremental unique identifier of each row."
+        tests:
+          - unique
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: int64
       - name: company_name
         description: "Name of the company."
+        tests:
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: string
       - name: industry
         description: "Type of industry."
+        tests:
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: string
       - name: total_laid_off
         description: "Number of employees laid off."
+        tests:
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: numeric
       - name: percentage_laid_off
         description: "Percentage of employees laid off."
+        tests:
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: float64
       - name: funds_raised
         description: "Funds raised by the company (in Millions $)."
+        tests:
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: float64
       - name: stage
         description: "Stage of funding."
+        tests:
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: string
       - name: location
         description: "Location of the company."
+        tests:
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: string
       - name: country
         description: "Country name where the company is based on."
+        tests:
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: string
       - name: laid_off_at
         description: "Date of layoff."
+        tests:
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: date
       - name: ingested_at
         description: "Timestamp which the record was ingested on."
+        tests:
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: timestamp
