@@ -17,10 +17,9 @@ clean-targets:
   - "dbt_packages"
 
 models:
-  layoffs:
-    staging:
-      +schema: staging
-      +tags: staging
+  staging:
+    schema: staging
+    tags: ["staging"]
 
 seeds:
   layoffs:

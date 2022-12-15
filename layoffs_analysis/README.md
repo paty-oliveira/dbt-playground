@@ -26,12 +26,14 @@ The source of the layoff dataset is [Kaggle](https://www.kaggle.com/datasets/swa
 ## Analysis
 Based on analysis I found in Kaggle, these are the transformations that will be applied on the staging model:
 
+### Transformations in the staging layer:
+
 - `industry`, `total_laid_off`, `percentage_laid_off`, `stage` and `funds_raised` columns contain null values
-    - `industry` - Convert NaN to 'Unknown'
-    - `total_laid_off` - Convert NaN to 0
-    - `percentage_laid_off` - Convert NaN to 0
-    - `stage` - Convert NaN to 'Unknown'
-    - `funds_raised` - Convert NaN to 0
+    - `industry` - Convert NULL to 'Unknown'
+    - `total_laid_off` - Convert NULL to 0
+    - `percentage_laid_off` - Convert NULL to 0
+    - `stage` - Convert NULL to 'Unknown'
+    - `funds_raised` - Convert NULL to 0
 - Data types conversions:
     - `company` - VARCHAR
     - `location` - VARCHAR
@@ -42,3 +44,5 @@ Based on analysis I found in Kaggle, these are the transformations that will be 
     - `country` - VARCHAR
     - `funds_raised` - FLOAT
 - `location` - Convert 'SF Bay Area' to 'San Francisco'
+- Generate an auto-incrementing identifier AS `id`
+- Add `ingested_at` column that represents the timestamp at which the row was ingested by dbt.
