@@ -54,10 +54,13 @@ will allow seeing the number of layoffs by industry, country and company stage.
 
 
 ## Staging models
-
+- `stg_layoffs` is the staging model. It bears a one-to-one relationship with the source data table
+it represents.  It has the same granularity, but the columns have been renamed or recast.
 
 
 ## Marts models
-
+- `layoffs_by_industry`
+- `layoffs_by_country`
+- `layoffs_by_funding_stage`
 
 ## Data Lineage

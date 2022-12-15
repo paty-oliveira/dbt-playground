@@ -21,6 +21,10 @@ models:
     schema: staging
     tags: ["staging"]
 
+  marts:
+    schema: marts
+    tags: ["marts"]
+
 seeds:
   layoffs:
     +schema: raw
