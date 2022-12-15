@@ -1,0 +1,38 @@
+version: 2
+
+models:
+  - name: layoffs_by_country
+    description: "Aggregate model for layoffs by country."
+    columns:
+      - name: country
+        description: "Country name where the company is based on."
+      - name: total_laid_off
+        description: "Number of employees laid off per country."
+      - name: layoff_started_at
+        description: "Date of the first layoff."
+      - name: layoff_updated_at
+        description: "Date which the last layoff was made."
+
+  - name: layoffs_by_funding_stage
+    description: "Aggregate model for layoffs by funding stage."
+    columns:
+      - name: funding_stage
+        description: "Stage of funding."
+      - name: total_laid_off
+        description: "Number of employees laid off per funding stage."
+      - name: layoff_started_at
+        description: "Date of the first layoff."
+      - name: layoff_updated_at
+        description: "Date which the last layoff was made."
+
+  - name: layoffs_by_industry
+    description: "Aggregate model for layoffs by industry."
+    columns:
+      - name: industry
+        description: "Type of industry."
+      - name: total_laid_off
+        description: "Number of employees laid off per industry."
+      - name: layoff_started_at
+        description: "Date of the first layoff."
+      - name: layoff_updated_at
+        description: "Date which the last layoff was made."
