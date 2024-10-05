@@ -1,0 +1,24 @@
+version: "3.8"
+
+services:
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
+
+  postgres:
+      image: postgres
+      container_name: postgres
+      restart: always
+      environment:
+        POSTGRES_USER: dbt
+        POSTGRES_PASSWORD: password1
+        POSTGRES_DB: starbucks
+      ports:
+        - 5432:5432
+
+
+volumes:
+  postgres_data:
+    driver: local
