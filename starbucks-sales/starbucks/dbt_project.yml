@@ -19,3 +19,6 @@ models:
   starbucks:
     staging:
       +materialized: view
+      
+seeds:
+  +schema: raw
