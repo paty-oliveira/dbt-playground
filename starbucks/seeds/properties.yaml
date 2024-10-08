@@ -1,0 +1,79 @@
+version: 2
+
+seeds:
+  - name: portfolio
+    description: >
+      Information about the promotional offers that are possible to receive, and basic information
+      about each one.
+    config:
+      column_types:
+        a: integer
+        reward: integer
+        channels: text
+        difficulty: integer
+        duration: integer
+        offer_type: text
+        id: text
+    columns:
+      - name: a
+        description: Incremental counter for each row.
+      - name: reward
+        description: Reward given for completing an offer.
+      - name: channels
+        description: A list of channels through which the offer was received.
+      - name: difficulty
+        description: Minimum required spend to complete the offer.
+      - name: duration
+        description: Time in minutes for the offer to be open.
+      - name: offer_type
+        description: Type of offer.
+      - name: id
+        description: Unique identifier for each offer.
+  - name: profile
+    description: >
+      Information about the customers that are part of the promotional offers program.
+    config:
+      column_types:
+        a: integer
+        gender: text
+        age: integer
+        id: text
+        become_member_on: integer
+        income: numeric
+    columns:
+      - name: a
+        description: Incremental counter for each row.
+      - name: gender
+        description: Gender of the customer.
+      - name: age
+        description: Age of the customer.
+      - name: id
+        description: Unique identifier for each customer.
+      - name: become_member_on
+        description: Date when the customer created an app account.
+      - name: income
+        description: Income of the customer.
+  - name: transcript
+    description: >
+      Information about the different steps of promotional offers that a customer receives. It also
+      contains information about the transactions that the customer makes.
+    config:
+      column_types:
+        a: integer
+        person: text
+        event: text
+        value: text
+        time: integer
+    columns:
+      - name: a
+        description: Incremental counter for each row.
+      - name: event
+        description: Type of event. Can be offer received, offer viewed, transaction, or offer completed.
+      - name: time
+        description: Time in hours since the start of the test.
+      - name: person
+        description: Unique identifier for each customer.
+      - name: value
+        description: Value/identifier of the event.
+      - name: id
+        description: Incremental counter for each transaction.
