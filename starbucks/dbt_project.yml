@@ -11,7 +11,7 @@ seed-paths: ["seeds"]
 macro-paths: ["macros"]
 snapshot-paths: ["snapshots"]
 
-clean-targets:         
+clean-targets:
   - "target"
   - "dbt_packages"
 
@@ -20,6 +20,6 @@ models:
     staging:
       +materialized: view
       +schema: staging
-      
+
 seeds:
   +schema: raw
