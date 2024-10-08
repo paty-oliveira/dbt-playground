@@ -1,0 +1,41 @@
+version: 2
+models:
+  - name: stg_portfolio
+    description: >
+      Information about the promotional offers that are possible to receive, and
+      basic information about each one.
+    columns:
+      - name: offer_id
+        description: Unique identifier for each offer.
+        data_type: text
+        data_tests:
+          - not_null
+          - unique
+      - name: reward
+        description: Reward given for completing an offer.
+        data_type: integer
+        data_tests:
+          - not_null
+      - name: duration
+        description: Time in minutes for the offer to be open.
+        data_type: integer
+        data_tests:
+          - not_null
+      - name: difficulty_rank
+        description: Minimum required spend to complete the offer.
+        data_type: integer
+        data_tests:
+          - not_null
+      - name: offer_type
+        description: Type of offer.
+        data_type: text
+        data_tests:
+          - not_null
+          - accepted_values:
+              values:
+                - bogo
+                - discount
+                - informational
+      - name: channels
+        description: A list of channels through which the offer was received.
+        data_type: text

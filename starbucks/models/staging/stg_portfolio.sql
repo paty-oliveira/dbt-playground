@@ -1,8 +1,8 @@
 SELECT
-    id AS portfolio_id,
+    id AS offer_id,
     reward,
-    duration AS duration_rank,
+    duration,
     difficulty AS difficulty_rank,
-    unnest(offer_type) as offer_type,
+    offer_type,
     channels
 FROM {{ ref('portfolio') }}
