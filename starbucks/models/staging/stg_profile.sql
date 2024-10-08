@@ -10,5 +10,6 @@ SELECT
     COALESCE(gender, 'N/A') AS customer_gender,
     age AS customer_age,
     COALESCE(income, 0) AS customer_income,
-    TO_DATE(became_member_on::TEXT, 'YYYYMMDD') AS subscribed_date
+    TO_DATE(became_member_on::TEXT, 'YYYYMMDD') AS subscribed_date,
+    CURRENT_TIMESTAMP AS ingested_at
 FROM filtered_customers

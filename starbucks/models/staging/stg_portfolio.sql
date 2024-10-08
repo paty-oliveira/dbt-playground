@@ -4,5 +4,6 @@ SELECT
     duration,
     difficulty AS difficulty_rank,
     offer_type,
-    channels
+    channels,
+    CURRENT_TIMESTAMP AS ingested_at
 FROM {{ ref('portfolio') }}

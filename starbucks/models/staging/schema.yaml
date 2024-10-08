@@ -40,6 +40,11 @@ models:
       - name: channels
         description: A list of channels through which the offer was received.
         data_type: text
+      - name: ingested_at
+        description: Timestamp when the data was ingested.
+        data_type: timestamp
+        data_tests:
+          - not_null
 
   - name: stg_profile
     description: >
@@ -77,6 +82,12 @@ models:
         data_type: date
         data_tests:
           - not_null
+      - name: ingested_at
+        description: Timestamp when the data was ingested.
+        data_type: timestamp
+        data_tests:
+          - not_null
+
   - name: stg_transcript
     description: >
       Information about the different steps of promotional offers that a customer receives. It also
@@ -117,5 +128,10 @@ models:
       - name: days_since_start
         description: Time in days since the start of the test.
         data_type: integer
+        data_tests:
+          - not_null
+      - name: ingested_at
+        description: Timestamp when the data was ingested.
+        data_type: timestamp
         data_tests:
           - not_null
