@@ -66,7 +66,7 @@ seeds:
         time: integer
     columns:
       - name: a
-        description: Incremental counter for each row.
+        description: Incremental counter for each transaction.
       - name: event
         description: Type of event. Can be offer received, offer viewed, transaction, or offer completed.
       - name: time
@@ -75,5 +75,3 @@ seeds:
         description: Unique identifier for each customer.
       - name: value
         description: Value/identifier of the event.
-      - name: id
-        description: Incremental counter for each transaction.

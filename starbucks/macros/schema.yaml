@@ -1,0 +1,10 @@
+version: 2
+
+macros:
+  - name: get_days_from_hours
+    description: >
+      Convert hours to days.
+    arguments:
+      - name: hours
+        description: Number of hours.
+        type: integer

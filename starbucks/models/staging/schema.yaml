@@ -1,4 +1,5 @@
 version: 2
+
 models:
   - name: stg_portfolio
     description: >
@@ -74,5 +75,47 @@ models:
       - name: subscribed_date
         description: Date when the customer created an app account.
         data_type: date
+        data_tests:
+          - not_null
+  - name: stg_transcript
+    description: >
+      Information about the different steps of promotional offers that a customer receives. It also
+      contains information about the transactions that the customer makes.
+    columns:
+      - name: transaction_id
+        description: Unique identifier for each transaction.
+        data_type: text
+        data_tests:
+          - not_null
+          - unique
+      - name: customer_id
+        description: Unique identifier for each customer.
+        data_type: text
+        data_tests:
+          - not_null
+      - name: transaction_type
+        description: Type of event. Can be offer received, offer viewed, transaction, or offer completed.
+        data_type: text
+        data_tests:
+          - not_null
+          - accepted_values:
+              values:
+                - offer received
+                - offer viewed
+                - transaction
+                - offer completed
+      - name: transaction_value
+        description: Value of the transaction.
+        data_type: text
+        data_tests:
+          - not_null
+      - name: hours_since_start
+        description: Time in hours since the start of the test.
+        data_type: integer
+        data_tests:
+          - not_null
+      - name: days_since_start
+        description: Time in days since the start of the test.
+        data_type: integer
         data_tests:
           - not_null
