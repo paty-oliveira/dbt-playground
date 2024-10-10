@@ -96,14 +96,14 @@ models:
       - name: transaction_id
         description: Unique identifier for each transaction.
         data_type: text
-        data_tests:
-          - not_null
-          - unique
       - name: customer_id
         description: Unique identifier for each customer.
         data_type: text
         data_tests:
           - not_null
+      - name: offer_id
+        description: Unique identifier for each offer.
+        data_type: text
       - name: transaction_type
         description: Type of event. Can be offer received, offer viewed, transaction, or offer completed.
         data_type: text
@@ -115,11 +115,12 @@ models:
                 - offer viewed
                 - transaction
                 - offer completed
-      - name: transaction_value
-        description: Value of the transaction.
-        data_type: text
-        data_tests:
-          - not_null
+      - name: reward
+        description: Reward given for completing an offer.
+        data_type: integer
+      - name: amount
+        description: Amount spent by the customer.
+        data_type: integer
       - name: hours_since_start
         description: Time in hours since the start of the test.
         data_type: integer
