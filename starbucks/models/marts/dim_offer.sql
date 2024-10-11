@@ -1,4 +1,5 @@
 {% set source = ref('stg_portfolio') %}
+{% set surrogate_key_columns = ['offer_id', 'channel'] %}
 
 WITH unnested_channels AS (
     SELECT
@@ -14,7 +15,7 @@ WITH unnested_channels AS (
 
 final AS (
     SELECT
-        CONCAT(offer_id, '_', channel) AS offer_channel_key,
+        {{ dbt_utils.generate_surrogate_key(surrogate_key_columns)}} AS offer_channel_key,
         offer_id,
         offer_type,
         channel,
