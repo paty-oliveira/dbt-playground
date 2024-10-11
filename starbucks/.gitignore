@@ -18,3 +18,4 @@ __pycache__/
 
 # Ignore virtual environment files (optional)
 env/
+package-lock.yml
