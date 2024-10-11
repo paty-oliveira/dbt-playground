@@ -10,7 +10,6 @@ WITH transformed_portfolio AS (
         REPLACE(REPLACE(REPLACE(channels, '''', ''), '[', '{'), ']', '}')::text[] AS channels,
         CURRENT_TIMESTAMP AS ingested_at
     FROM {{ source }}
-
 )
 
 SELECT * FROM transformed_portfolio
