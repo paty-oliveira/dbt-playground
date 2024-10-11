@@ -1,3 +1,5 @@
+{% set source = ref('transcript') %}
+
 WITH cleaned_transcript AS (
     SELECT
         a AS transaction_id,
@@ -7,7 +9,7 @@ WITH cleaned_transcript AS (
         time AS hours_since_start,
         {{ get_days_from_hours('time') }} AS days_since_start,
         CURRENT_TIMESTAMP AS ingested_at
-    FROM {{ ref('transcript') }}
+    FROM {{ source }}
 ),
 
 unnest_offer_received AS (
@@ -62,8 +64,8 @@ final AS (
         customer_id,
         offer_id,
         transaction_type,
-        reward::INT,
-        amount::INT,
+        COALESCE(reward::INT, 0) AS reward,
+        COALESCE(amount::INT, 0) AS amount,
         hours_since_start,
         days_since_start,
         ingested_at

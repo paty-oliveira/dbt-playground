@@ -1,3 +1,5 @@
+{% set source = ref('portfolio') %}
+
 SELECT
     id AS offer_id,
     reward,
@@ -6,4 +8,4 @@ SELECT
     offer_type,
     channels,
     CURRENT_TIMESTAMP AS ingested_at
-FROM {{ ref('portfolio') }}
+FROM {{ source }}

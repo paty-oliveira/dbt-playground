@@ -1,6 +1,8 @@
+{% set source = ref('profile') %}
+
 WITH filtered_customers AS (
     SELECT *
-    FROM {{ ref('profile') }}
+    FROM {{ source }}
     WHERE age != 118
     -- it seems that 118 is a placeholder for missing values, so it will be ignored
 )
