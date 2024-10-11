@@ -3,7 +3,7 @@ version: 2
 models:
   - name: dim_customer
     description: >
-      Dimensional table about the customers that are part of the promotional offers program.
+      Dimension table about the customers that are part of the promotional offers program.
     columns:
       - name: customer_id
         description: Unique identifier for each customer.
@@ -35,6 +35,61 @@ models:
       - name: subscribed_date
         description: Date when the customer created an app account.
         data_type: date
+        data_tests:
+          - not_null
+      - name: ingested_at
+        description: Timestamp when the data was ingested.
+        data_type: timestamp
+        data_tests:
+          - not_null
+
+  - name: dim_offer
+    description: >
+      Dimension table about the promotional offers that are part of the promotional offers program.
+    columns:
+      - name: offer_channel_key
+        description: Unique identifier/surrogate key for each offer-channel combination.
+        data_type: text
+        data_tests:
+          - not_null
+          - unique
+      - name: offer_id
+        description: Unique identifier for each offer.
+        data_type: text
+      - name: offer_type
+        description: Type of offer.
+        data_type: text
+        data_tests:
+          - not_null
+          - accepted_values:
+              values:
+                - bogo
+                - discount
+                - informational
+      - name: channel
+        description: A list of channels through which the offer was received.
+        data_type: text
+        data_tests:
+          - not_null
+          - accepted_values:
+              values:
+                - email
+                - mobile
+                - social
+                - web
+      - name: difficulty_rank
+        description: Minimum spending required to complete an offer.
+        data_type: integer
+        data_tests:
+          - not_null
+      - name: reward
+        description: Reward given upon completion of the offer.
+        data_type: numeric
+        data_tests:
+          - not_null
+      - name: duration
+        description: Time in minutes for the offer to be open.
+        data_type: integer
         data_tests:
           - not_null
       - name: ingested_at

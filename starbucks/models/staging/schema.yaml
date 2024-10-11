@@ -35,7 +35,7 @@ models:
           - not_null
       - name: offer_type
         description: Type of offer.
-        data_type: text[]
+        data_type: text
         data_tests:
           - not_null
           - accepted_values:
@@ -45,7 +45,7 @@ models:
                 - informational
       - name: channels
         description: A list of channels through which the offer was received.
-        data_type: text
+        data_type: text[]
       - name: ingested_at
         description: Timestamp when the data was ingested.
         data_type: timestamp
