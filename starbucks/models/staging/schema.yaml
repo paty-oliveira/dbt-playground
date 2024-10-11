@@ -96,6 +96,9 @@ models:
       - name: transaction_id
         description: Unique identifier for each transaction.
         data_type: text
+        data_tests:
+          - not_null
+          - unique
       - name: customer_id
         description: Unique identifier for each customer.
         data_type: text

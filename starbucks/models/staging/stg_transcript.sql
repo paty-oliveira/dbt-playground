@@ -43,6 +43,7 @@ unnest_transaction AS (
         NULL AS reward,
         transaction_value ->> 'amount' AS amount
     FROM cleaned_transcript
+    WHERE transaction_type = 'transaction'
 ),
 
 all_transactions AS (
