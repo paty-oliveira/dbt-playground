@@ -62,7 +62,7 @@ models:
         data_tests:
           - not_null
           - unique
-      - name: customer_gender
+      - name: gender
         description: Gender of the customer.
         data_type: text
         data_tests:
@@ -73,12 +73,12 @@ models:
                 - F
                 - O
                 - N/A
-      - name: customer_age
+      - name: age
         description: Age of the customer.
         data_type: integer
         data_tests:
           - not_null
-      - name: customer_income
+      - name: income
         description: Income of the customer.
         data_type: numeric
         data_tests:
