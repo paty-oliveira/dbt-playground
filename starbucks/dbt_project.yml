@@ -23,6 +23,9 @@ models:
     marts:
       +materialized: table
       +schema: marts
+    reports:
+      +materialized: table
+      +schema: reports
 
 seeds:
   +schema: raw
