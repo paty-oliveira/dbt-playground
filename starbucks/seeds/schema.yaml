@@ -8,7 +8,7 @@ seeds:
     config:
       column_types:
         a: integer
-        reward: integer
+        reward: numeric
         channels: text
         difficulty: integer
         duration: integer

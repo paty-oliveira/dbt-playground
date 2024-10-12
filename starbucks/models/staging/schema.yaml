@@ -20,7 +20,7 @@ models:
           - unique
       - name: reward
         description: Reward given for completing an offer.
-        data_type: integer
+        data_type: numeric
         data_tests:
           - not_null
       - name: duration
@@ -126,10 +126,10 @@ models:
                 - offer completed
       - name: reward
         description: Reward given for completing an offer.
-        data_type: integer
+        data_type: numeric
       - name: amount
         description: Amount spent by the customer.
-        data_type: integer
+        data_type: numeric
       - name: hours_since_start
         description: Time in hours since the start of the test.
         data_type: integer

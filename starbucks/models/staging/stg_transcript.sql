@@ -64,8 +64,8 @@ final AS (
         customer_id,
         offer_id,
         transaction_type,
-        COALESCE(reward::INT, 0) AS reward,
-        COALESCE(amount::INT, 0) AS amount,
+        COALESCE(reward::NUMERIC, 0) AS reward,
+        COALESCE(amount::NUMERIC, 0) AS amount,
         hours_since_start,
         days_since_start,
         ingested_at
