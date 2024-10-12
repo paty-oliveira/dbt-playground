@@ -2,9 +2,15 @@ version: 2
 
 macros:
   - name: get_days_from_hours
-    description: >
-      Convert hours to days.
+    description: Convert hours to days.
     arguments:
       - name: hours
         description: Number of hours.
         type: integer
+
+  - name: format_transaction_type
+    description: Format transaction type.
+    arguments:
+      - name: transaction_type
+        description: Transaction type.
+        type: string
