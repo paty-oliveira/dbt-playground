@@ -1,0 +1,52 @@
+version: 2
+
+models:
+  - name: customer_profile_received_offer
+    description: >
+      Model about the customer profile when an offer is received.
+    columns:
+      - name: customer_profile_received_offer_key
+        description: Unique identifier for each customer profile when an offer is received.
+        data_type: text
+        data_tests:
+          - not_null
+          - unique
+      - name: customer_id
+        description: Unique identifier for each customer.
+        data_type: text
+        data_tests:
+          - not_null
+      - name: offer_id
+        description: Unique identifier for each offer.
+        data_type: text
+      - name: gender
+        description: Gender of the customer.
+        data_type: text
+        data_tests:
+          - not_null
+          - accepted_values:
+              values:
+                - M
+                - F
+                - O
+                - N/A
+      - name: age
+        description: Age of the customer.
+        data_type: integer
+        data_tests:
+          - not_null
+      - name: income
+        description: Income of the customer.
+        data_type: numeric
+        data_tests:
+          - not_null
+      - name: subscribed_date
+        description: Date when the customer created an app account.
+        data_type: date
+        data_tests:
+          - not_null
+      - name: ingested_at
+        description: Timestamp when the data was ingested.
+        data_type: timestamp
+        data_tests:
+          - not_null
