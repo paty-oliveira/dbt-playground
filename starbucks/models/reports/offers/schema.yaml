@@ -1,0 +1,27 @@
+version: 2
+
+models:
+  - name: completed_offer_agg_channel
+    description: >
+      This model aggregates the completed offers by channel.
+    columns:
+      - name: completed_offer_agg_channel_key
+        description: >
+          The primary key of the model.
+        data_type: integer
+        data_tests:
+          - unique
+          - not_null
+      - name: channel
+        description: >
+          The channel of the offer.
+      - name: total_completed_transactions
+        description: >
+          The number of completed offers by channel.
+        data_type: integer
+      - name: ingested_at
+        description: >
+          The timestamp when the data was ingested.
+        data_type: timestamp
+        data_tests:
+          - not_null
