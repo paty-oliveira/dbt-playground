@@ -4,6 +4,5 @@
     customer_profile_by_transaction_type(
         'completed',
         surrogate_columns,
-        'customer_profile_completed_offer_key'
-    )
+        'customer_profile_completed_offer_key')
 }}
