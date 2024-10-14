@@ -108,3 +108,39 @@ models:
         data_type: timestamp
         data_tests:
           - not_null
+
+  - name: customer_profile_completed_transaction
+    description: >
+      Model about the customer profile when a transaction is completed.
+    columns:
+      - name: customer_profile_completed_transaction_key
+        description: Unique identifier for each customer profile when a transaction is completed.
+        data_type: text
+        data_tests:
+          - not_null
+          - unique
+      - name: customer_id
+        description: Unique identifier for each customer.
+        data_type: text
+        data_tests:
+          - not_null
+      - name: offer_id
+        description: Unique identifier for each offer.
+        data_type: text
+      - name: gender
+        description: Gender of the customer.
+        data_type: text
+      - name: age
+        description: Age of the customer.
+        data_type: integer
+      - name: income
+        description: Income of the customer.
+        data_type: numeric
+      - name: subscribed_date
+        description: Date when the customer created an app account.
+        data_type: date
+      - name: ingested_at
+        description: Timestamp when the data was ingested.
+        data_type: timestamp
+        data_tests:
+          - not_null
