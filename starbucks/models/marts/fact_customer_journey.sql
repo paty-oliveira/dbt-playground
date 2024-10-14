@@ -30,7 +30,7 @@ final AS (
         customers.gender,
         customers.age,
         customers.income,
-        transactions.transaction_type,
+        {{ format_transaction_type('transactions.transaction_type') }} AS transaction_type,
         customers.subscribed_date AS customer_subscribed_date,
         CURRENT_TIMESTAMP AS ingested_at
     FROM transactions
