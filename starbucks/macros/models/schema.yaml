@@ -1,0 +1,18 @@
+version: 2
+
+macros:
+  - name: customer_profile_by_transaction_type
+    description: >
+      This macro returns a customer profile based on the transaction type.
+    arguments:
+      - name: transaction_type
+        type: String
+        description: The transaction type to filter the customer profile by.
+      - name: surrogate_key_columns
+        type: Array
+        description: >
+          The surrogate key columns to use for the customer profile.
+      - name: surrogate_key_name
+        type: String
+        description: >
+          The surrogate key column name to use for the customer profile.
