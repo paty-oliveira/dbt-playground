@@ -1,0 +1,26 @@
+[sqlfluff]
+templater = dbt
+max_line_length = 100
+dialect = postgres
+
+[sqlfluff:templater:dbt]
+apply_dbt_builtins = true
+profile = starbucks
+project_dir = ./
+profiles_dir = ~/.dbt
+
+[sqlfluff:indentation]
+indent_unit = space
+indented_ctes = False
+indented_joins = True
+indented_using_on = True
+indented_on_contents = True
+tab_space_size = 4
+template_blocks_indent = True
+
+[sqlfluff:layout:type:comma]
+spacing_before = touch
+line_position = trailing
+
+[sqlfluff:templater:jinja]
+apply_dbt_builtins = true

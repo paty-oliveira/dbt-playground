@@ -5,17 +5,17 @@ WITH unnested_channels AS (
     SELECT
         offer_id,
         offer_type,
-        UNNEST(channels) AS channel,
         difficulty_rank,
         reward,
         duration,
-        ingested_at
+        ingested_at,
+        UNNEST(channels) AS channel
     FROM {{ source }}
 ),
 
 final AS (
     SELECT
-        {{ dbt_utils.generate_surrogate_key(surrogate_key_columns)}} AS offer_channel_key,
+        {{ dbt_utils.generate_surrogate_key(surrogate_key_columns) }} AS offer_channel_key,
         offer_id,
         offer_type,
         channel,

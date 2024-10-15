@@ -1,6 +1,11 @@
 {% set customers = ref('dim_customer') %}
 {% set transactions = ref('stg_transcript') %}
-{% set surrogate_key_columns = ['transactions.transaction_id', 'transactions.customer_id', 'transactions.offer_id'] %}
+{% set surrogate_key_columns = [
+    'transactions.transaction_id',
+    'transactions.customer_id',
+    'transactions.offer_id'
+    ]
+%}
 
 WITH customers AS (
     SELECT
@@ -34,8 +39,8 @@ final AS (
         customers.subscribed_date AS customer_subscribed_date,
         CURRENT_TIMESTAMP AS ingested_at
     FROM transactions
-    JOIN customers
-        ON transactions.customer_id = customers.customer_id
+        INNER JOIN customers
+            ON transactions.customer_id = customers.customer_id
 )
 
 SELECT * FROM final

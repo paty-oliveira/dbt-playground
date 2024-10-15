@@ -1,6 +1,11 @@
 {% set offers = ref('dim_offer') %}
 {% set transactions = ref('stg_transcript') %}
-{% set surrogate_key_columns = ['transactions.offer_id', 'transactions.transaction_id', 'offers.channel']%}
+{% set surrogate_key_columns = [
+    'transactions.offer_id',
+    'transactions.transaction_id',
+    'offers.channel'
+    ]
+%}
 
 WITH offers AS (
     SELECT
@@ -9,7 +14,7 @@ WITH offers AS (
         channel,
         difficulty_rank,
         duration
-    FROM {{ offers}}
+    FROM {{ offers }}
 ),
 
 offer_transactions AS (
@@ -38,8 +43,8 @@ final AS (
         transactions.days_since_start,
         CURRENT_TIMESTAMP AS ingested_at
     FROM offer_transactions AS transactions
-    JOIN offers
-        ON transactions.offer_id = offers.offer_id
+        INNER JOIN offers
+            ON transactions.offer_id = offers.offer_id
 )
 
 SELECT * FROM final
