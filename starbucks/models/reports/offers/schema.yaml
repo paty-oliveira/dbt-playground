@@ -63,3 +63,24 @@ models:
         data_type: timestamp
         data_tests:
           - not_null
+
+  - name: completed_offer_agg_type
+    description: >
+      This model aggregates the completed offers by type.
+    columns:
+      - name: completed_offer_agg_type_key
+        description: The surrogate key of the model.
+        data_type: integer
+        data_tests:
+          - unique
+          - not_null
+      - name: type
+        description: The type of the offer.
+      - name: total_completed_transactions
+        description: The number of completed offers by type.
+        data_type: integer
+      - name: ingested_at
+        description: The timestamp when the data was ingested.
+        data_type: timestamp
+        data_tests:
+          - not_null
