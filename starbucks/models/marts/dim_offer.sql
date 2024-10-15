@@ -24,6 +24,7 @@ final AS (
         duration,
         ingested_at
     FROM unnested_channels
+
 )
 
 SELECT * FROM final
