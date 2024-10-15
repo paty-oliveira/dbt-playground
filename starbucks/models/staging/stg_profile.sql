@@ -10,8 +10,8 @@ WITH filtered_customers AS (
 final AS (
     SELECT
         id AS customer_id,
-        COALESCE(gender, 'N/A') AS gender,
         age,
+        COALESCE(gender, 'N/A') AS gender,
         COALESCE(income, 0) AS income,
         TO_DATE(became_member_on::TEXT, 'YYYYMMDD') AS subscribed_date,
         CURRENT_TIMESTAMP AS ingested_at
