@@ -16,3 +16,17 @@ macros:
         type: String
         description: >
           The surrogate key column name to use for the customer profile.
+
+  - name: completed_offers_agg_by
+    description: >
+      This macro returns the completed offers aggregated by the specified columns.
+    arguments:
+      - name: agg_column
+        type: String
+        description: The column to aggregate the completed offers by.
+      - name: new_column_name
+        type: String
+        description: The new column name for the aggregated completed offers.
+      - name: surrogate_column_name
+        type: String
+        description: The surrogate column name to use for the completed offers.
