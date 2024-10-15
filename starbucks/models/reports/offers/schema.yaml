@@ -6,22 +6,39 @@ models:
       This model aggregates the completed offers by channel.
     columns:
       - name: completed_offer_agg_channel_key
-        description: >
-          The primary key of the model.
+        description: The surrogate key of the model.
         data_type: integer
         data_tests:
           - unique
           - not_null
       - name: channel
-        description: >
-          The channel of the offer.
+        description: The channel of the offer.
       - name: total_completed_transactions
-        description: >
-          The number of completed offers by channel.
+        description: The number of completed offers by channel.
         data_type: integer
       - name: ingested_at
-        description: >
-          The timestamp when the data was ingested.
+        description: The timestamp when the data was ingested.
+        data_type: timestamp
+        data_tests:
+          - not_null
+
+  - name: completed_offer_agg_reward
+    description: >
+      This model aggregates the completed offers by reward.
+    columns:
+      - name: completed_offer_agg_reward_key
+        description: The surrogate key of the model.
+        data_type: integer
+        data_tests:
+          - unique
+          - not_null
+      - name: reward
+        description: The reward of the offer.
+      - name: total_completed_transactions
+        description: The number of completed offers by reward.
+        data_type: integer
+      - name: ingested_at
+        description: The timestamp when the data was ingested.
         data_type: timestamp
         data_tests:
           - not_null
