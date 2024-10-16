@@ -6,14 +6,8 @@ models:
       Information about the promotional offers that are possible to receive, and
       basic information about each one.
     columns:
-      - name: offer_channel_key
-        description: Unique identifier/Surogate key for each offer.
-        data_type: text
-        data_tests:
-          - not_null
-          - unique
       - name: offer_id
-        description: Unique identifier for each offer.
+        description: Unique identifier/Surogate key for each offer.
         data_type: text
         data_tests:
           - not_null
