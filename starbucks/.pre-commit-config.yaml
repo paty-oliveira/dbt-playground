@@ -14,3 +14,24 @@ repos:
           'dbt-postgres',
           'sqlfluff-templater-dbt'
         ]
+  - repo: https://github.com/dbt-checkpoint/dbt-checkpoint
+    rev: v2.0.4
+    hooks:
+    # Compile, run, and test dbt models
+      - id: dbt-compile
+        args: ['--model-postfix', '+', '--']
+      - id: dbt-run
+        args: ['--model-postfix', '+', '--']
+      - id: dbt-test
+        args: ['--model-postfix', '+', '--']
+    # Script Checks
+      - id: check-script-semicolon
+      - id: check-script-has-no-table-name
+    # Model Checks
+      - id: check-model-has-description
+      - id: check-model-has-properties-file
+      - id: check-column-desc-are-same
+      - id: check-model-columns-have-desc
+    # Macro Checks
+      - id: check-macro-has-description
+      - id: check-macro-arguments-have-desc
