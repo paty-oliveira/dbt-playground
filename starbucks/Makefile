@@ -72,3 +72,5 @@ dbt-generate-docs: ## Generate and serve dbt documentation
 	@echo "Generating project's documentation..."
 	@dbt docs generate
 	@dbt docs serve --port 8081
+
+run-all: dbt-deps dbt-seed dbt-run dbt-test ## Build entire dbt project
