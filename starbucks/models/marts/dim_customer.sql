@@ -1,3 +1,3 @@
 {% set source = ref('stg_profile') %}
 
-SELECT * FROM {{ source }}
+select * from {{ source }}

@@ -183,11 +183,11 @@ models:
         data_tests:
           - not_null
 
-  - name: fact_customer_journey
+  - name: fact_customer_transactions
     description: >
-      Fact table about the customer journey through the promotional offers program.
+      Fact table about the customer transactions through the promotional offers program.
     columns:
-      - name: customer_journey_key
+      - name: customer_transaction_key
         description: Unique identifier for each customer journey.
         data_type: text
         data_tests:
@@ -237,11 +237,11 @@ models:
         data_type: timestamp
         data_tests:
           - not_null
-  - name: fact_offer_performance
+  - name: fact_offer_transactions
     description: >
-      Fact table about the performance of the promotional offers program.
+      Fact table about the transactions that are part of the promotional offers program.
     columns:
-      - name: offer_performance_key
+      - name: offer_transaction_key
         description: Unique identifier for each offer performance.
         data_type: text
         data_tests:

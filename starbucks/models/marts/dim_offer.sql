@@ -1,30 +1,33 @@
 {% set source = ref('stg_portfolio') %}
 {% set surrogate_key_columns = ['offer_id', 'channel'] %}
 
-WITH unnested_channels AS (
-    SELECT
-        offer_id,
-        offer_type,
-        difficulty_rank,
-        reward,
-        duration,
-        ingested_at,
-        UNNEST(channels) AS channel
-    FROM {{ source }}
-),
+with
+    unnested_channels as (
+        select
+            offer_id,
+            offer_type,
+            difficulty_rank,
+            reward,
+            duration,
+            ingested_at,
+            unnest(channels) as channel
+        from {{ source }}
+    ),
 
-final AS (
-    SELECT
-        {{ dbt_utils.generate_surrogate_key(surrogate_key_columns) }} AS offer_channel_key,
-        offer_id,
-        offer_type,
-        channel,
-        difficulty_rank,
-        reward,
-        duration,
-        ingested_at
-    FROM unnested_channels
+    final as (
+        select
+            {{ dbt_utils.generate_surrogate_key(surrogate_key_columns) }}
+            as offer_channel_key,
+            offer_id,
+            offer_type,
+            channel,
+            difficulty_rank,
+            reward,
+            duration,
+            ingested_at
+        from unnested_channels
 
-)
+    )
 
-SELECT * FROM final
+select *
+from final
