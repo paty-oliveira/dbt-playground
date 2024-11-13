@@ -7,3 +7,5 @@ The goal of having this playground here is to improve my data analysis and model
 
 - [Analysis of referrals on Real Estate business](./referrals-analysis/)
 - [Analysis of Layoffs in Tech companies](./layoffs_analysis/)
+- [Analysis of Starbucks Promotional Deals](./starbucks/)
+- [Analysis of e-commerce Company Sales and Orders](./e-commerce)
