@@ -1,7 +1,7 @@
 # Name your project! Project names should contain only lowercase characters
 # and underscores. A good package name should reflect your organization's
 # name or the intended use of these models
-name: "my_new_project"
+name: "the_look_dw"
 version: "1.0.0"
 config-version: 2
 
@@ -34,5 +34,6 @@ clean-targets: # directories to be removed by `dbt clean`
 # using the `{{ config(...) }}` macro.
 
 models:
-  staging:
-    +schema: staging
+  the_look_dw:
+    staging:
+      +schema: staging
