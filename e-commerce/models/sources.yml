@@ -7,7 +7,6 @@ sources:
     description: TheLook is a fictitious eCommerce clothing site developed by the Looker team.
     tables:
       - name: distribution_centers
-        description: 
       - name: events
       - name: inventory_items
       - name: order_items
