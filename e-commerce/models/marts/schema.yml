@@ -1,0 +1,43 @@
+version: 2
+
+models:
+  - name: dim_users
+    description: Dimension for customers.
+    columns:
+      - name: user_id
+        description: Unique identifier for each user.
+        data_tests:
+          - not_null
+          - unique    
+      - name: first_name
+        description: First name of the user.
+      - name: last_name
+        description: Last name of the user.
+      - name: age
+        description: Age of the user.
+      - name: gender
+        description: Gender of the user.
+      - name: traffic_source
+        description: Source of the traffic leading to the user.
+      - name: email
+        description: Email address of the user.
+      - name: country
+        description: Country where the user is located.
+      - name: state
+        description: State where the user is located.
+      - name: city
+        description: City where the user is lcoated.
+      - name: street_address
+        description: Street address of the user.
+      - name: postal_code
+        description: Postal code of the user.
+      - name: latitude
+        description: Latitude coordinate of the user.
+      - name: longitude
+        description: Longitude coordinate of the user.
+      - name: localization_point
+        description: Geography localization point of the user.
+      - name: user_created_at
+        description: Timestamp indicating when the user account was created.
+      - name: ingested_at
+        description: Timestamp indicating when the record was ingested.
