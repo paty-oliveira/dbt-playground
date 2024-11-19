@@ -1,0 +1,148 @@
+version: 2
+
+models:
+  - name: dim_user
+    description: Dimension table for customers.
+    columns:
+      - name: user_id
+        description: Unique identifier for each user.
+        data_tests:
+          - not_null
+          - unique
+      - name: first_name
+        description: First name of the user.
+      - name: last_name
+        description: Last name of the user.
+      - name: age
+        description: Age of the user.
+      - name: gender
+        description: Gender of the user.
+      - name: traffic_source
+        description: Source of the traffic leading to the user.
+      - name: email
+        description: Email address of the user.
+      - name: country
+        description: Country where the user is located.
+      - name: state
+        description: State where the user is located.
+      - name: city
+        description: City where the user is lcoated.
+      - name: street_address
+        description: Street address of the user.
+      - name: postal_code
+        description: Postal code of the user.
+      - name: latitude
+        description: Latitude coordinate of the user.
+      - name: longitude
+        description: Longitude coordinate of the user.
+      - name: localization_point
+        description: Geography localization point of the user.
+      - name: user_created_at
+        description: Timestamp indicating when the user account was created.
+      - name: ingested_at
+        description: Timestamp indicating when the record was ingested.
+
+      - name: ingested_at
+        description: Timestamp indicating when the record was ingested.
+
+  - name: dim_product
+    description: Dimension table for products.
+    columns:
+      - name: product_id
+        description: Unique identifier for each product.
+        data_tests:
+          - not_null
+          - unique
+      - name: distribution_center_id
+        description: Identifier for the distribution center associated with the product.
+      - name: product_sku
+        description: Stock Keeping Unit of the product.
+        data_tests:
+          - not_null
+      - name: product_category
+        description: Category to which the product belongs.
+      - name: product_department
+        description: Department to which the product belongs.
+      - name: product_name
+        description: Name of the product.
+      - name: product_brand
+        description: Brand of the product.
+      - name: product_retail_price
+        description: Retail price of the product.
+      - name: cost
+        description: Cost of the product.
+      - name: ingested_at
+        description: Timestamp indicating when the record was ingested.
+
+  - name: dim_distribution_center
+    description: Dimension table for distribution centers.
+    columns:
+      - name: distribution_center_id
+        description: Unique identifier for each distribution center.
+        data_tests:
+          - not_null
+          - unique
+      - name: name
+        description: Name of the distribution center.
+        data_tests:
+          - not_null
+          - unique
+      - name: latitude
+        description: Latitude coordinate of the distribution center.
+      - name: longitude
+        description: Longitude coordinate of the distribution center.
+      - name: localization_point
+        description: Geography localization point of the distribution center.
+      - name: ingested_at
+        description: Timestamp indicating when the record was ingested.
+
+  - name: dim_website_event
+    description: Dimension table for user interaction on e-commerce website.
+    columns:
+      - name: website_event_id
+        description: Unique identifier for each event.
+        data_tests:
+          - not_null
+          - unique
+      - name: session_id
+        description: Identifier for the session during which the event occured.
+        data_tests:
+          - not_null
+          - unique
+      - name: user_id
+        description: Identifier for the user associated with the event.
+      - name: event_sequence_number
+        description: Sequence number of the event.
+      - name: event_type
+        description: Type of event recorded.
+        data_tests:
+          - not_null
+          - accepted_values:
+              values:
+                ["cancel", "cart", "department", "home", "product", "purchase"]
+      - name: ip_address
+        description: IP address from which the event originated.
+      - name: browser
+        description: Web browser used during the event
+        data_tests:
+          - not_null
+          - accepted_values:
+              values: ["Firefox", "Chrome", "Safari", "Other", "IE"]
+      - name: traffic_source
+        description: Source of the traffic leading to the event
+        data_tests:
+          - not_null
+          - accepted_values:
+              values: ["Adwords", "Email", "Facebook", "Organic", "YouTube"]
+      - name: uri
+        description: Uniform Resource Identifier assoaciated with the event.
+      - name: city
+        description: City where the event occurred.
+      - name: state
+        description: State where the event occurred.
+      - name: postal_code
+        description: Postal code of the event location.
+      - name: created_at
+        description: Timestamp indicating when the event took place.
+      - name: ingested_at
+        description: Timestamp indicating when the record was ingested.

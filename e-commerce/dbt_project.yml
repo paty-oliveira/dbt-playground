@@ -37,3 +37,6 @@ models:
   the_look_dw:
     staging:
       +schema: staging
+
+    marts:
+      +schema: marts
