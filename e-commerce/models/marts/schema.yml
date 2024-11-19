@@ -73,3 +73,25 @@ models:
         description: Cost of the product.
       - name: ingested_at
         description: Timestamp indicating when the record was ingested.
+
+  - name: dim_distribution_center
+    description: Dimension table for distribution centers.
+    columns:
+      - name: distribution_center_id
+        description: Unique identifier for each distribution center.
+        data_tests:
+          - not_null
+          - unique
+      - name: name
+        description: Name of the distribution center.
+        data_tests:
+          - not_null
+          - unique
+      - name: latitude
+        description: Latitude coordinate of the distribution center.
+      - name: longitude
+        description: Longitude coordinate of the distribution center.
+      - name: localization_point
+        description: Geography localization point of the distribution center.
+      - name: ingested_at
+        description: Timestamp indicating when the record was ingested.
