@@ -8,7 +8,7 @@ models:
         description: Unique identifier for each user.
         data_tests:
           - not_null
-          - unique    
+          - unique
       - name: first_name
         description: First name of the user.
       - name: last_name
@@ -93,5 +93,56 @@ models:
         description: Longitude coordinate of the distribution center.
       - name: localization_point
         description: Geography localization point of the distribution center.
+      - name: ingested_at
+        description: Timestamp indicating when the record was ingested.
+
+  - name: dim_website_event
+    description: Dimension table for user interaction on e-commerce website.
+    columns:
+      - name: website_event_id
+        description: Unique identifier for each event.
+        data_tests:
+          - not_null
+          - unique
+      - name: session_id
+        description: Identifier for the session during which the event occured.
+        data_tests:
+          - not_null
+          - unique
+      - name: user_id
+        description: Identifier for the user associated with the event.
+      - name: event_sequence_number
+        description: Sequence number of the event.
+      - name: event_type
+        description: Type of event recorded.
+        data_tests:
+          - not_null
+          - accepted_values:
+              values:
+                ["cancel", "cart", "department", "home", "product", "purchase"]
+      - name: ip_address
+        description: IP address from which the event originated.
+      - name: browser
+        description: Web browser used during the event
+        data_tests:
+          - not_null
+          - accepted_values:
+              values: ["Firefox", "Chrome", "Safari", "Other", "IE"]
+      - name: traffic_source
+        description: Source of the traffic leading to the event
+        data_tests:
+          - not_null
+          - accepted_values:
+              values: ["Adwords", "Email", "Facebook", "Organic", "YouTube"]
+      - name: uri
+        description: Uniform Resource Identifier assoaciated with the event.
+      - name: city
+        description: City where the event occurred.
+      - name: state
+        description: State where the event occurred.
+      - name: postal_code
+        description: Postal code of the event location.
+      - name: created_at
+        description: Timestamp indicating when the event took place.
       - name: ingested_at
         description: Timestamp indicating when the record was ingested.
