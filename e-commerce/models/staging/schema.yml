@@ -131,7 +131,7 @@ models:
       - name: ingested_at
         description: Timestamp indicating when the record was ingested.
 
-  - name: products
+  - name: stg_products
     description: Information about the products.
     columns:
       - name: product_id

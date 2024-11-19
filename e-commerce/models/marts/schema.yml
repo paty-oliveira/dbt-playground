@@ -1,8 +1,8 @@
 version: 2
 
 models:
-  - name: dim_users
-    description: Dimension for customers.
+  - name: dim_user
+    description: Dimension table for customers.
     columns:
       - name: user_id
         description: Unique identifier for each user.
@@ -39,5 +39,37 @@ models:
         description: Geography localization point of the user.
       - name: user_created_at
         description: Timestamp indicating when the user account was created.
+      - name: ingested_at
+        description: Timestamp indicating when the record was ingested.
+
+      - name: ingested_at
+        description: Timestamp indicating when the record was ingested.
+
+  - name: dim_product
+    description: Dimension table for products.
+    columns:
+      - name: product_id
+        description: Unique identifier for each product.
+        data_tests:
+          - not_null
+          - unique
+      - name: distribution_center_id
+        description: Identifier for the distribution center associated with the product.
+      - name: product_sku
+        description: Stock Keeping Unit of the product.
+        data_tests:
+          - not_null
+      - name: product_category
+        description: Category to which the product belongs.
+      - name: product_department
+        description: Department to which the product belongs.
+      - name: product_name
+        description: Name of the product.
+      - name: product_brand
+        description: Brand of the product.
+      - name: product_retail_price
+        description: Retail price of the product.
+      - name: cost
+        description: Cost of the product.
       - name: ingested_at
         description: Timestamp indicating when the record was ingested.
