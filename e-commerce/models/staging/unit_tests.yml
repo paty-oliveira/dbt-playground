@@ -5,10 +5,33 @@ unit_tests:
     given:
       - input: source('the-look-e-commerce', 'distribution_centers')
         rows:
-          - { id: 1, name: 'New Orleans LA', latitude: 29.95, longitude: -90.0667, distribution_center_geom: 'ST_GEOGPOINT(-90.0667, 29.95)'}
-          - { id: 2, name: 'Houston TX', latitude: 29.7604, longitude: -95.3698, distribution_center_geom: 'ST_GEOGPOINT(-95.3698, 29.7604)'}
+          - {
+              id: 1,
+              name: "New Orleans LA",
+              latitude: 29.95,
+              longitude: -90.0667,
+              distribution_center_geom: "ST_GEOGPOINT(-90.0667, 29.95)",
+            }
+          - {
+              id: 2,
+              name: "Houston TX",
+              latitude: 29.7604,
+              longitude: -95.3698,
+              distribution_center_geom: "ST_GEOGPOINT(-95.3698, 29.7604)",
+            }
     expect:
       rows:
-          - { distribution_center_id: 1, name: 'New Orleans LA', latitude: 29.95, longitude: -90.0667, localization_point: 'ST_GEOGPOINT(-90.0667, 29.95)'}
-          - { distribution_center_id: 2, name: 'Houston TX', latitude: 29.7604, longitude: -95.3698, localization_point: 'ST_GEOGPOINT(-95.3698, 29.7604)'}
-
+        - {
+            distribution_center_id: 1,
+            name: "New Orleans LA",
+            latitude: 29.95,
+            longitude: -90.0667,
+            localization_point: "ST_GEOGPOINT(-90.0667, 29.95)",
+          }
+        - {
+            distribution_center_id: 2,
+            name: "Houston TX",
+            latitude: 29.7604,
+            longitude: -95.3698,
+            localization_point: "ST_GEOGPOINT(-95.3698, 29.7604)",
+          }
