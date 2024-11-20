@@ -11,7 +11,7 @@ SELECT
     age,
     gender,
     traffic_source,
-    email,
+{{ mask_column(column_name='email', method= 'partial') }} AS email_address,
     country,
     state,
     city,

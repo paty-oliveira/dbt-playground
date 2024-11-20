@@ -1,0 +1,419 @@
+unit_tests:
+  - name: test_stg_distribution_centers
+    description: It should reflect 1:1 relationship between source and staging model of Distribution Centers data.
+    model: stg_distribution_centers
+    given:
+      - input: source('the-look-e-commerce', 'distribution_centers')
+        rows:
+          - {
+              id: 1,
+              name: "New Orleans LA",
+              latitude: 29.95,
+              longitude: -90.0667,
+              distribution_center_geom: "ST_GEOGPOINT(-90.0667, 29.95)",
+            }
+          - {
+              id: 2,
+              name: "Houston TX",
+              latitude: 29.7604,
+              longitude: -95.3698,
+              distribution_center_geom: "ST_GEOGPOINT(-95.3698, 29.7604)",
+            }
+    expect:
+      rows:
+        - {
+            distribution_center_id: 1,
+            name: "New Orleans LA",
+            latitude: 29.95,
+            longitude: -90.0667,
+            localization_point: "ST_GEOGPOINT(-90.0667, 29.95)",
+          }
+        - {
+            distribution_center_id: 2,
+            name: "Houston TX",
+            latitude: 29.7604,
+            longitude: -95.3698,
+            localization_point: "ST_GEOGPOINT(-95.3698, 29.7604)",
+          }
+
+  - name: test_stg_events
+    description: It should reflect 1:1 relationship between source and staging model of Events data.
+    model: stg_events
+    given:
+      - input: source('the-look-e-commerce', 'events')
+        rows:
+          - {
+              id: 1,
+              user_id: 1,
+              session_id: "b1a0ea33-e055-4f08-9bf2-bf41796dffdc",
+              sequence_number: 3,
+              event_type: "cancel",
+              ip_address: "10.12.224.224",
+              browser: "Firefox",
+              traffic_source: "Email",
+              uri: "/cancel",
+              city: "São Paulo",
+              state: "São Paulo",
+              postal_code: "02220-000",
+              created_at: "2022-12-16 07:00:00 UTC",
+            }
+          - {
+              id: 2,
+              user_id: 2,
+              session_id: "7d90ba06-ba61-480d-93d1-d29410a7214d",
+              sequence_number: 3,
+              event_type: "cancel",
+              ip_address: "76.105.71.119",
+              browser: "Chrome",
+              traffic_source: "Adwords",
+              uri: "/cancel",
+              city: "São Paulo",
+              state: "São Paulo",
+              postal_code: "02675-031",
+              created_at: "2021-10-25 07:12:00 UTC",
+            }
+    expect:
+      rows:
+        - {
+            event_id: 1,
+            user_id: 1,
+            session_id: "b1a0ea33-e055-4f08-9bf2-bf41796dffdc",
+            event_sequence_number: 3,
+            event_type: "cancel",
+            ip_address: "10.12.224.224",
+            browser: "Firefox",
+            traffic_source: "Email",
+            uri: "/cancel",
+            city: "São Paulo",
+            state: "São Paulo",
+            postal_code: "02220-000",
+            created_at: "2022-12-16 07:00:00 UTC",
+          }
+        - {
+            event_id: 2,
+            user_id: 2,
+            session_id: "7d90ba06-ba61-480d-93d1-d29410a7214d",
+            event_sequence_number: 3,
+            event_type: "cancel",
+            ip_address: "76.105.71.119",
+            browser: "Chrome",
+            traffic_source: "Adwords",
+            uri: "/cancel",
+            city: "São Paulo",
+            state: "São Paulo",
+            postal_code: "02675-031",
+            created_at: "2021-10-25 07:12:00 UTC",
+          }
+
+  - name: test_stg_inventory_items
+    description: It should reflect 1:1 relationship between source and staging model of Inventory items data.
+    model: stg_inventory_items
+    given:
+      - input: source('the-look-e-commerce', 'inventory_items')
+        rows:
+          - {
+              id: 1,
+              product_id: 13844,
+              created_at: "2022-03-05 13:32:38 UTC",
+              sold_at: "2022-03-18 03:51:38 UTC",
+              cost: 2.7680398976188529,
+              product_category: "Accessories",
+              product_name: "(ONE) 1 Satin Headband",
+              product_brand: "Funny Girl Designs",
+              product_retail_price: 6.9899997711181641,
+              product_department: "Women",
+              product_sku: "2A3E953A5E3D81E67945BCE5519F84C8",
+              product_distribution_center_id: 7,
+            }
+          - {
+              id: 2,
+              product_id: 14086,
+              created_at: "2024-02-04 08:18:07 UTC",
+              sold_at: null,
+              cost: 2.2462499030120675,
+              product_category: "Accessories",
+              product_name: "(One) CHEER Rhinestone Studded Stretch Headband",
+              product_brand: "Funny Girl Designs",
+              product_retail_price: 5.9899997711181641,
+              product_department: "Women",
+              product_sku: "8EFA9015A4EF4632A954E820ECA834AD",
+              product_distribution_center_id: 7,
+            }
+    expect:
+      rows:
+        - {
+            inventory_item_id: 1,
+            product_id: 13844,
+            created_at: "2022-03-05 13:32:38 UTC",
+            sold_at: "2022-03-18 03:51:38 UTC",
+            cost: 2.7680398976188529,
+            product_category: "Accessories",
+            product_name: "(ONE) 1 Satin Headband",
+            product_brand: "Funny Girl Designs",
+            product_retail_price: 6.9899997711181641,
+            product_department: "Women",
+            product_sku: "2A3E953A5E3D81E67945BCE5519F84C8",
+            distribution_center_id: 7,
+          }
+        - {
+            inventory_item_id: 2,
+            product_id: 14086,
+            created_at: "2024-02-04 08:18:07 UTC",
+            sold_at: null,
+            cost: 2.2462499030120675,
+            product_category: "Accessories",
+            product_name: "(One) CHEER Rhinestone Studded Stretch Headband",
+            product_brand: "Funny Girl Designs",
+            product_retail_price: 5.9899997711181641,
+            product_department: "Women",
+            product_sku: "8EFA9015A4EF4632A954E820ECA834AD",
+            distribution_center_id: 7,
+          }
+
+  - name: test_stg_order_items
+    description: It should reflect 1:1 relationship between source and staging model of Order items data.
+    model: stg_order_items
+    given:
+      - input: source('the-look-e-commerce', 'order_items')
+        rows:
+          - {
+              id: 1,
+              order_id: 8799,
+              user_id: 6884,
+              product_id: 14235,
+              inventory_item_id: 34545,
+              status: "Cancelled",
+              created_at: "2024-08-15 02:46:58 UTC",
+              shipped_at: null,
+              delivered_at: null,
+              returned_at: null,
+              sale_price: 0.0199999995529651,
+            }
+          - {
+              id: 2,
+              order_id: 14352,
+              user_id: 11364,
+              product_id: 14235,
+              inventory_item_id: 56290,
+              status: "Complete",
+              created_at: "2022-09-27 10:36:49 UTC",
+              shipped_at: "2022-09-28 08:40:00 UTC",
+              delivered_at: "2022-09-29 01:58:00 UTC",
+              returned_at: null,
+              sale_price: 0.0199999995529651,
+            }
+    expect:
+      rows:
+        - {
+            order_item_id: 1,
+            order_id: 8799,
+            user_id: 6884,
+            product_id: 14235,
+            inventory_item_id: 34545,
+            status: "Cancelled",
+            created_at: "2024-08-15 02:46:58 UTC",
+            shipped_at: null,
+            delivered_at: null,
+            returned_at: null,
+            sale_price: 0.0199999995529651,
+          }
+        - {
+            order_item_id: 2,
+            order_id: 14352,
+            user_id: 11364,
+            product_id: 14235,
+            inventory_item_id: 56290,
+            status: "Complete",
+            created_at: "2022-09-27 10:36:49 UTC",
+            shipped_at: "2022-09-28 08:40:00 UTC",
+            delivered_at: "2022-09-29 01:58:00 UTC",
+            returned_at: null,
+            sale_price: 0.0199999995529651,
+          }
+
+  - name: test_stg_orders
+    description: It should reflect 1:1 relationship between source and staging model of Orders data.
+    model: stg_orders
+    given:
+      - input: source('the-look-e-commerce', 'orders')
+        rows:
+          - {
+              order_id: 1,
+              user_id: 3,
+              status: "Cancelled",
+              gender: "F",
+              created_at: "2023-08-19 15:00:00 UTC",
+              returned_at: null,
+              shipped_at: null,
+              delivered_at: null,
+              num_of_item: 1,
+            }
+          - {
+              order_id: 2,
+              user_id: 4,
+              status: "Complete",
+              gender: "F",
+              created_at: "2023-12-25 09:12:00 UTC",
+              returned_at: null,
+              shipped_at: "2023-12-27 02:28:00 UTC",
+              delivered_at: "2023-12-27 19:25:00 UTC",
+              num_of_item: 1,
+            }
+    expect:
+      rows:
+        - {
+            order_id: 1,
+            user_id: 3,
+            status: "Cancelled",
+            gender: "F",
+            created_at: "2023-08-19 15:00:00 UTC",
+            returned_at: null,
+            shipped_at: null,
+            delivered_at: null,
+            num_of_item: 1,
+          }
+        - {
+            order_id: 2,
+            user_id: 4,
+            status: "Complete",
+            gender: "F",
+            created_at: "2023-12-25 09:12:00 UTC",
+            returned_at: null,
+            shipped_at: "2023-12-27 02:28:00 UTC",
+            delivered_at: "2023-12-27 19:25:00 UTC",
+            num_of_item: 1,
+          }
+
+  - name: test_stg_products
+    description: It should reflect 1:1 relationship between source and staging model of Products data.
+    model: stg_products
+    given:
+      - input: source('the-look-e-commerce', 'products')
+        rows:
+          - {
+              id: 1,
+              cost: 2.5187499908497561,
+              category: "Accessories",
+              name: "Low Profile Dyed Cotton Twill Cap - Navy W39S55D",
+              brand: "MG",
+              retail_price: 6.25,
+              department: "Women",
+              sku: "EBD58B8A3F1D72F4206201DA62FB1204",
+              distribution_center_id: 1,
+            }
+          - {
+              id: 2,
+              cost: 3.1062499998370185,
+              category: "Plus",
+              name: "Low Profile Dyed Cotton Twill Cap - Navy W39S55D",
+              brand: "MG",
+              retail_price: 6.25,
+              department: "Women",
+              sku: "63894CE404B8C652915C41EF8B879D20",
+              distribution_center_id: 1,
+            }
+    expect:
+      rows:
+        - {
+            product_id: 1,
+            cost: 2.5187499908497561,
+            product_category: "Accessories",
+            product_name: "Low Profile Dyed Cotton Twill Cap - Navy W39S55D",
+            product_brand: "MG",
+            product_retail_price: 6.25,
+            product_department: "Women",
+            product_sku: "EBD58B8A3F1D72F4206201DA62FB1204",
+            distribution_center_id: 1,
+          }
+        - {
+            product_id: 2,
+            cost: 3.1062499998370185,
+            product_category: "Plus",
+            product_name: "Low Profile Dyed Cotton Twill Cap - Navy W39S55D",
+            product_brand: "MG",
+            product_retail_price: 6.25,
+            product_department: "Women",
+            product_sku: "63894CE404B8C652915C41EF8B879D20",
+            distribution_center_id: 1,
+          }
+
+  - name: test_stg_users
+    description: It should reflect 1:1 relationship between source and staging model of Users data.
+    model: stg_users
+    given:
+      - input: source('the-look-e-commerce', 'users')
+        rows:
+          - {
+              id: 1,
+              first_name: "Kyle",
+              last_name: "Berry",
+              email: "kyleberry@example.org",
+              age: 12,
+              gender: "M",
+              state: "Acre",
+              street_address: "6027 Victoria Row Apt. 900",
+              postal_code: "69980-000",
+              city: null,
+              country: "Brasil",
+              latitude: -8.065346116,
+              longitude: -72.87094866,
+              traffic_source: "Search",
+              created_at: "2024-04-10 10:58:00 UTC",
+              user_geom: "ST_GEOGPOINT(-72.87094866, -8.065346)",
+            }
+          - {
+              id: 2,
+              first_name: "Tiffany",
+              last_name: "Roberts",
+              email: "tiffanyroberts@example.net",
+              age: 41,
+              gender: "F",
+              state: "Acre",
+              street_address: "2567 Hill Row Suite 521",
+              postal_code: "69980-000",
+              city: null,
+              country: "Brasil",
+              latitude: -8.065346116,
+              longitude: -72.87094866,
+              traffic_source: "Display",
+              created_at: "2020-04-08 09:59:00 UTC",
+              user_geom: "ST_GEOGPOINT(-72.87094866, -8.065346)",
+            }
+    expect:
+      rows:
+        - {
+            user_id: 1,
+            first_name: "Kyle",
+            last_name: "Berry",
+            email_address: "ky*****************rg",
+            age: 12,
+            gender: "M",
+            state: "Acre",
+            street_address: "6027 Victoria Row Apt. 900",
+            postal_code: "69980-000",
+            city: null,
+            country: "Brasil",
+            latitude: -8.065346116,
+            longitude: -72.87094866,
+            traffic_source: "Search",
+            created_at: "2024-04-10 10:58:00 UTC",
+            localization_point: "ST_GEOGPOINT(-72.87094866, -8.065346)",
+          }
+        - {
+            user_id: 2,
+            first_name: "Tiffany",
+            last_name: "Roberts",
+            email_address: "ti**********************et",
+            age: 41,
+            gender: "F",
+            state: "Acre",
+            street_address: "2567 Hill Row Suite 521",
+            postal_code: "69980-000",
+            city: null,
+            country: "Brasil",
+            latitude: -8.065346116,
+            longitude: -72.87094866,
+            traffic_source: "Display",
+            created_at: "2020-04-08 09:59:00 UTC",
+            localization_point: "ST_GEOGPOINT(-72.87094866, -8.065346)",
+          }
