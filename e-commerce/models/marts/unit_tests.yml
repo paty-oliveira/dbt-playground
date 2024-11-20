@@ -1,0 +1,14 @@
+unit_tests:
+  - name: unit_test_fct_orders
+    description: It should return order detailed information such as status, total order items, total order value and so on.
+    model: fct_orders
+    given:
+      - input: ref('stg_orders')
+        format: sql
+        fixture: input_stg_orders
+      - input: ref('stg_order_items')
+        format: sql
+        fixture: input_stg_order_items
+    expect:
+      format: sql
+      fixture: expected_fct_orders
