@@ -291,30 +291,30 @@ unit_tests:
       - input: source('the-look-e-commerce', 'products')
         rows:
           - {
-            id: 1,
-            cost: 2.5187499908497561,
-            category: "Accessories",
-            name: "Low Profile Dyed Cotton Twill Cap - Navy W39S55D",
-            brand: "MG",
-            retail_price: 6.25,
-            department: "Women",
-            sku: "EBD58B8A3F1D72F4206201DA62FB1204",
-            distribution_center_id: 1
-          }
+              id: 1,
+              cost: 2.5187499908497561,
+              category: "Accessories",
+              name: "Low Profile Dyed Cotton Twill Cap - Navy W39S55D",
+              brand: "MG",
+              retail_price: 6.25,
+              department: "Women",
+              sku: "EBD58B8A3F1D72F4206201DA62FB1204",
+              distribution_center_id: 1,
+            }
           - {
-            id: 2,
-            cost: 3.1062499998370185,
-            category: "Plus",
-            name: "Low Profile Dyed Cotton Twill Cap - Navy W39S55D",
-            brand: "MG",
-            retail_price: 6.25,
-            department: "Women",
-            sku: "63894CE404B8C652915C41EF8B879D20",
-            distribution_center_id: 1
-          }
+              id: 2,
+              cost: 3.1062499998370185,
+              category: "Plus",
+              name: "Low Profile Dyed Cotton Twill Cap - Navy W39S55D",
+              brand: "MG",
+              retail_price: 6.25,
+              department: "Women",
+              sku: "63894CE404B8C652915C41EF8B879D20",
+              distribution_center_id: 1,
+            }
     expect:
       rows:
-          - {
+        - {
             product_id: 1,
             cost: 2.5187499908497561,
             product_category: "Accessories",
@@ -323,9 +323,9 @@ unit_tests:
             product_retail_price: 6.25,
             product_department: "Women",
             product_sku: "EBD58B8A3F1D72F4206201DA62FB1204",
-            distribution_center_id: 1
+            distribution_center_id: 1,
           }
-          - {
+        - {
             product_id: 2,
             cost: 3.1062499998370185,
             product_category: "Plus",
@@ -334,5 +334,86 @@ unit_tests:
             product_retail_price: 6.25,
             product_department: "Women",
             product_sku: "63894CE404B8C652915C41EF8B879D20",
-            distribution_center_id: 1
+            distribution_center_id: 1,
+          }
+
+  - name: test_stg_users
+    description: It should reflect 1:1 relationship between source and staging model of Users data.
+    model: stg_users
+    given:
+      - input: source('the-look-e-commerce', 'users')
+        rows:
+          - {
+              id: 1,
+              first_name: "Kyle",
+              last_name: "Berry",
+              email: "kyleberry@example.org",
+              age: 12,
+              gender: "M",
+              state: "Acre",
+              street_address: "6027 Victoria Row Apt. 900",
+              postal_code: "69980-000",
+              city: null,
+              country: "Brasil",
+              latitude: -8.065346116,
+              longitude: -72.87094866,
+              traffic_source: "Search",
+              created_at: "2024-04-10 10:58:00 UTC",
+              user_geom: "ST_GEOGPOINT(-72.87094866, -8.065346)",
+            }
+          - {
+              id: 2,
+              first_name: "Tiffany",
+              last_name: "Roberts",
+              email: "tiffanyroberts@example.net",
+              age: 41,
+              gender: "F",
+              state: "Acre",
+              street_address: "2567 Hill Row Suite 521",
+              postal_code: "69980-000",
+              city: null,
+              country: "Brasil",
+              latitude: -8.065346116,
+              longitude: -72.87094866,
+              traffic_source: "Display",
+              created_at: "2020-04-08 09:59:00 UTC",
+              user_geom: "ST_GEOGPOINT(-72.87094866, -8.065346)",
+            }
+    expect:
+      rows:
+        - {
+            user_id: 1,
+            first_name: "Kyle",
+            last_name: "Berry",
+            email_address: "ky*****************rg",
+            age: 12,
+            gender: "M",
+            state: "Acre",
+            street_address: "6027 Victoria Row Apt. 900",
+            postal_code: "69980-000",
+            city: null,
+            country: "Brasil",
+            latitude: -8.065346116,
+            longitude: -72.87094866,
+            traffic_source: "Search",
+            created_at: "2024-04-10 10:58:00 UTC",
+            localization_point: "ST_GEOGPOINT(-72.87094866, -8.065346)",
+          }
+        - {
+            user_id: 2,
+            first_name: "Tiffany",
+            last_name: "Roberts",
+            email_address: "ti**********************et",
+            age: 41,
+            gender: "F",
+            state: "Acre",
+            street_address: "2567 Hill Row Suite 521",
+            postal_code: "69980-000",
+            city: null,
+            country: "Brasil",
+            latitude: -8.065346116,
+            longitude: -72.87094866,
+            traffic_source: "Display",
+            created_at: "2020-04-08 09:59:00 UTC",
+            localization_point: "ST_GEOGPOINT(-72.87094866, -8.065346)",
           }
