@@ -283,3 +283,56 @@ unit_tests:
             delivered_at: "2023-12-27 19:25:00 UTC",
             num_of_item: 1,
           }
+
+  - name: test_stg_products
+    description: It should reflect 1:1 relationship between source and staging model of Products data.
+    model: stg_products
+    given:
+      - input: source('the-look-e-commerce', 'products')
+        rows:
+          - {
+            id: 1,
+            cost: 2.5187499908497561,
+            category: "Accessories",
+            name: "Low Profile Dyed Cotton Twill Cap - Navy W39S55D",
+            brand: "MG",
+            retail_price: 6.25,
+            department: "Women",
+            sku: "EBD58B8A3F1D72F4206201DA62FB1204",
+            distribution_center_id: 1
+          }
+          - {
+            id: 2,
+            cost: 3.1062499998370185,
+            category: "Plus",
+            name: "Low Profile Dyed Cotton Twill Cap - Navy W39S55D",
+            brand: "MG",
+            retail_price: 6.25,
+            department: "Women",
+            sku: "63894CE404B8C652915C41EF8B879D20",
+            distribution_center_id: 1
+          }
+    expect:
+      rows:
+          - {
+            product_id: 1,
+            cost: 2.5187499908497561,
+            product_category: "Accessories",
+            product_name: "Low Profile Dyed Cotton Twill Cap - Navy W39S55D",
+            product_brand: "MG",
+            product_retail_price: 6.25,
+            product_department: "Women",
+            product_sku: "EBD58B8A3F1D72F4206201DA62FB1204",
+            distribution_center_id: 1
+          }
+          - {
+            product_id: 2,
+            cost: 3.1062499998370185,
+            product_category: "Plus",
+            product_name: "Low Profile Dyed Cotton Twill Cap - Navy W39S55D",
+            product_brand: "MG",
+            product_retail_price: 6.25,
+            product_department: "Women",
+            product_sku: "63894CE404B8C652915C41EF8B879D20",
+            distribution_center_id: 1
+          }
