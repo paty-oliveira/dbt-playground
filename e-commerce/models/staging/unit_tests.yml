@@ -1,6 +1,6 @@
 unit_tests:
-  - name: test_distribution_centers
-    description: It reflect 1:1 relationship between source and staging model of Distribution Centers data.
+  - name: test_stg_distribution_centers
+    description: It should reflect 1:1 relationship between source and staging model of Distribution Centers data.
     model: stg_distribution_centers
     given:
       - input: source('the-look-e-commerce', 'distribution_centers')
@@ -34,4 +34,73 @@ unit_tests:
             latitude: 29.7604,
             longitude: -95.3698,
             localization_point: "ST_GEOGPOINT(-95.3698, 29.7604)",
+          }
+
+  - name: test_stg_events
+    description: It should reflect 1:1 relationship between source and staging model of Events data.
+    model: stg_events
+    given:
+      - input: source('the-look-e-commerce', 'events')
+        rows:
+          - {
+              id: 1,
+              user_id: 1,
+              session_id: "b1a0ea33-e055-4f08-9bf2-bf41796dffdc",
+              sequence_number: 3,
+              event_type: "cancel",
+              ip_address: "10.12.224.224",
+              browser: "Firefox",
+              traffic_source: "Email",
+              uri: "/cancel",
+              city: "São Paulo",
+              state: "São Paulo",
+              postal_code: "02220-000",
+              created_at: "2022-12-16 07:00:00 UTC",
+            }
+          - {
+              id: 2,
+              user_id: 2,
+              session_id: "7d90ba06-ba61-480d-93d1-d29410a7214d",
+              sequence_number: 3,
+              event_type: "cancel",
+              ip_address: "76.105.71.119",
+              browser: "Chrome",
+              traffic_source: "Adwords",
+              uri: "/cancel",
+              city: "São Paulo",
+              state: "São Paulo",
+              postal_code: "02675-031",
+              created_at: "2021-10-25 07:12:00 UTC",
+            }
+    expect:
+      rows:
+        - {
+            event_id: 1,
+            user_id: 1,
+            session_id: "b1a0ea33-e055-4f08-9bf2-bf41796dffdc",
+            event_sequence_number: 3,
+            event_type: "cancel",
+            ip_address: "10.12.224.224",
+            browser: "Firefox",
+            traffic_source: "Email",
+            uri: "/cancel",
+            city: "São Paulo",
+            state: "São Paulo",
+            postal_code: "02220-000",
+            created_at: "2022-12-16 07:00:00 UTC",
+          }
+        - {
+            event_id: 2,
+            user_id: 2,
+            session_id: "7d90ba06-ba61-480d-93d1-d29410a7214d",
+            event_sequence_number: 3,
+            event_type: "cancel",
+            ip_address: "76.105.71.119",
+            browser: "Chrome",
+            traffic_source: "Adwords",
+            uri: "/cancel",
+            city: "São Paulo",
+            state: "São Paulo",
+            postal_code: "02675-031",
+            created_at: "2021-10-25 07:12:00 UTC",
           }
