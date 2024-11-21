@@ -1,0 +1,42 @@
+unit_tests:
+  - name: unit_test_fct_orders
+    description: It should return order detailed information such as status, total order items, total order value and so on.
+    model: fct_orders
+    given:
+      - input: ref('stg_orders')
+        format: sql
+        fixture: input_stg_orders__fct_orders
+      - input: ref('stg_order_items')
+        format: sql
+        fixture: input_stg_order_items__fct_orders
+    expect:
+      format: sql
+      fixture: expected_fct_orders
+
+  - name: unit_test_fct_order_items
+    description: It should return order item-level information, with enriched product details.
+    model: fct_order_items
+    given:
+      - input: ref('stg_order_items')
+        format: sql
+        fixture: input_stg_order_items__fct_order_items
+      - input: ref('dim_product')
+        format: sql
+        fixture: input_dim_product__fct_order_items
+      - input: ref('stg_inventory_items')
+        format: sql
+        fixture: input_stg_inventory_items__fct_order_items
+    expect:
+      format: sql
+      fixture: expected_fct_order_items
+
+  - name: unit_test_fct_inventory_products
+    description: It should return product inventory-level information.
+    model: fct_inventory_products
+    given:
+      - input: ref('stg_inventory_items')
+        format: sql
+        fixture: input_stg_inventory_items__fct_inventory_items
+    expect:
+      format: sql
+      fixture: expected_fct_inventory_products

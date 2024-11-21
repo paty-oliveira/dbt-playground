@@ -1,5 +1,5 @@
 unit_tests:
-  - name: test_stg_distribution_centers
+  - name: unit_test_stg_distribution_centers
     description: It should reflect 1:1 relationship between source and staging model of Distribution Centers data.
     model: stg_distribution_centers
     given:
@@ -36,7 +36,7 @@ unit_tests:
             localization_point: "ST_GEOGPOINT(-95.3698, 29.7604)",
           }
 
-  - name: test_stg_events
+  - name: unit_test_stg_events
     description: It should reflect 1:1 relationship between source and staging model of Events data.
     model: stg_events
     given:
@@ -105,7 +105,7 @@ unit_tests:
             created_at: "2021-10-25 07:12:00 UTC",
           }
 
-  - name: test_stg_inventory_items
+  - name: unit_test_stg_inventory_items
     description: It should reflect 1:1 relationship between source and staging model of Inventory items data.
     model: stg_inventory_items
     given:
@@ -170,7 +170,7 @@ unit_tests:
             distribution_center_id: 7,
           }
 
-  - name: test_stg_order_items
+  - name: unit_test_stg_order_items
     description: It should reflect 1:1 relationship between source and staging model of Order items data.
     model: stg_order_items
     given:
@@ -231,7 +231,7 @@ unit_tests:
             sale_price: 0.0199999995529651,
           }
 
-  - name: test_stg_orders
+  - name: unit_test_stg_orders
     description: It should reflect 1:1 relationship between source and staging model of Orders data.
     model: stg_orders
     given:
@@ -284,7 +284,7 @@ unit_tests:
             num_of_item: 1,
           }
 
-  - name: test_stg_products
+  - name: unit_test_stg_products
     description: It should reflect 1:1 relationship between source and staging model of Products data.
     model: stg_products
     given:
@@ -337,7 +337,7 @@ unit_tests:
             distribution_center_id: 1,
           }
 
-  - name: test_stg_users
+  - name: unit_test_stg_users
     description: It should reflect 1:1 relationship between source and staging model of Users data.
     model: stg_users
     given:
