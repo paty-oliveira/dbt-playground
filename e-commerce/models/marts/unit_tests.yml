@@ -29,3 +29,14 @@ unit_tests:
     expect:
       format: sql
       fixture: expected_fct_order_items
+
+  - name: unit_test_fct_inventory_products
+    description: It should return product inventory-level information.
+    model: fct_inventory_products
+    given:
+      - input: ref('stg_inventory_items')
+        format: sql
+        fixture: input_stg_inventory_items__fct_inventory_items
+    expect:
+      format: sql
+      fixture: expected_fct_inventory_products

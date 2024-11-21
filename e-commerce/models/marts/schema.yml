@@ -236,3 +236,41 @@ models:
         description: Timestamp indicating when the order item was returned.
       - name: ingested_at
         description: Timestamp indicating when the record was ingested.
+
+  - name: fct_inventory_products
+    description: Fact table which Links inventory information for each product.
+    columns:
+      - name: product_id
+        description: Identifier for the associated product.
+        data_tests:
+          - not_null
+          - unique
+      - name: distribution_center_id
+        description: Unique identifier for each distribution center.
+      - name: product_sku
+        description: Stock Keeping Unit of the product.
+        data_tests:
+          - not_null
+          - unique
+      - name: product_category
+        description: Category of the associated product.
+      - name: product_name
+        description: Name of the associated product.
+      - name: product_brand
+        description: Brand of the associated product.
+      - name: product_department
+        description: Department to which the product belongs.
+      - name: product_sale_price
+        description: Retail price of the associated product.
+      - name: product_cost
+        description: Cost of the product.
+      - name: total_products_available
+        description: Total number of product items available in the inventory.
+      - name: created_at
+        description: Timestamp indicating when the product was created for the first time in the system.
+      - name: sold_at
+        description: Timestamp indicating when the product was sold.
+      - name: is_product_available
+        description: Clarifies if the product is available in the inventory.
+      - name: ingested_at
+        description: Timestamp indicating when the record was ingested.
