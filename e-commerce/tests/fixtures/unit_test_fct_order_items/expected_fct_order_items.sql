@@ -8,17 +8,17 @@ FROM UNNEST([
         395725 AS inventory_item_id,
         'Complete' AS status,
         0.02 AS product_sale_price,
-        'CA793D8B79C1B6665CF109D6077A8277' AS product_sku,
-        'Dresses' AS product_category,
+        '8425BC94A44E3D1BB3C8C026B2702C00' AS product_sku,
+        'Accessories' AS product_category,
         'Women' AS product_department,
-        'Funfash NEW Funfash Slimming Black Gray Long Maxi Cocktail Dress Plus Size Made in USA'
-            AS product_name,
-        'Funfash' AS product_brand,
-        25.08 AS product_cost,
+        'Indestructable Aluminum Aluma Wallet - RED' AS product_name,
+        'marshal' AS product_brand,
+        0.01 AS product_cost,
         '2023-05-18 01:20:46 UTC' AS created_at,
         '2023-05-16 00:21:00 UTC' AS shipped_at,
         '2023-05-18 05:22:00 UTC' AS delivered_at,
-        null AS returned_at
+        null AS returned_at,
+        CURRENT_TIMESTAMP AS ingested_at
     ),
     STRUCT(
         146548 AS order_item_id,
@@ -28,16 +28,18 @@ FROM UNNEST([
         395720 AS inventory_item_id,
         'Complete' AS status,
         59.99 AS product_sale_price,
-        '8425BC94A44E3D1BB3C8C026B2702C00' AS product_sku,
-        'Accessories' AS product_category,
+        'CA793D8B79C1B6665CF109D6077A8277' AS product_sku,
+        'Dresses' AS product_category,
         'Women' AS product_department,
-        'Indestructable Aluminum Aluma Wallet - RED' AS product_name,
-        'marshal' AS product_brand,
-        0.01 AS product_cost,
+        'Funfash NEW Funfash Slimming Black Gray Long Maxi Cocktail Dress Plus Size Made in USA'
+            AS product_name,
+        'Funfash' AS product_brand,
+        25.08 AS product_cost,
         '2023-05-16 01:13:11 UTC' AS created_at,
         '2023-05-16 00:21:00 UTC' AS shipped_at,
         '2023-05-18 05:22:00 UTC' AS delivered_at,
-        null AS returned_at
+        null AS returned_at,
+        CURRENT_TIMESTAMP AS ingested_at
     ),
     STRUCT(
         146549 AS order_item_id,
@@ -56,6 +58,7 @@ FROM UNNEST([
         '2023-05-15 00:05:07 UTC' AS created_at,
         '2023-05-16 00:21:00 UTC' AS shipped_at,
         '2023-05-18 05:22:00 UTC' AS delivered_at,
-        null AS returned_at
+        null AS returned_at,
+        CURRENT_TIMESTAMP AS ingested_at
     )
 ]) AS expected_data
