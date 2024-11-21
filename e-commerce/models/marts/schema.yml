@@ -224,6 +224,8 @@ models:
         description: Brand of the product.
       - name: product_cost
         description: Cost of the product.
+      - name: total_inventory_items
+        description: Total number of product items available in the inventory.
       - name: created_at
         description: Timestamp indicating when the order item was created.
       - name: shipped_at

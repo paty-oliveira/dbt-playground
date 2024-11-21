@@ -23,6 +23,9 @@ unit_tests:
       - input: ref('dim_product')
         format: sql
         fixture: input_dim_product__fct_order_items
+      - input: ref('stg_inventory_items')
+        format: sql
+        fixture: input_stg_inventory_items__fct_order_items
     expect:
       format: sql
       fixture: expected_fct_order_items
