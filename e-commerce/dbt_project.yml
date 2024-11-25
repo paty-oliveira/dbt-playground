@@ -35,6 +35,7 @@ clean-targets: # directories to be removed by `dbt clean`
 
 models:
   the_look_dw:
+    +required_docs: true
     staging:
       +schema: staging
 

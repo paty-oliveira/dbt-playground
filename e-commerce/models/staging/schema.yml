@@ -170,7 +170,7 @@ models:
         description: Gender of the user.
       - name: traffic_source
         description: Source of the traffic leading to the user.
-      - name: email
+      - name: email_address
         description: Email address of the user.
       - name: country
         description: Country where the user is located.
