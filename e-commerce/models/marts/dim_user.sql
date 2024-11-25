@@ -21,5 +21,5 @@ SELECT
     localization_point,
     created_at AS user_created_at,
     NULLIF(city, 'null') AS city,
-    CURRENT_TIMESTAMP AS ingested_ad
+    CURRENT_TIMESTAMP AS ingested_at
 FROM {{ ref("stg_users") }}

@@ -7,5 +7,5 @@
 
 SELECT
     * EXCEPT (ingested_at),
-    CURRENT_TIMESTAMP AS ingested_ad
+    CURRENT_TIMESTAMP AS ingested_at
 FROM {{ ref("stg_products") }}

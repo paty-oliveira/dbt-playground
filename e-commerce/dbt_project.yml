@@ -33,10 +33,20 @@ clean-targets: # directories to be removed by `dbt clean`
 # continue to be built as views. These settings can be overridden in the individual model files
 # using the `{{ config(...) }}` macro.
 
+vars:
+  dq_tools_enable_store_test_results: True
+
 models:
+  dq_tools:
+    +schema: audit
+
   the_look_dw:
+    +required_docs: true
     staging:
       +schema: staging
 
     marts:
       +schema: marts
+
+on-run-end:
+  - "{{ dq_tools.store_test_results(results) }}"
