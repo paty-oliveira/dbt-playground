@@ -105,6 +105,7 @@ models:
         description: Identifier for the session during which the event occured.
         data_tests:
           - not_null
+          - unique
       - name: user_id
         description: Identifier for the user associated with the event.
       - name: event_sequence_number
