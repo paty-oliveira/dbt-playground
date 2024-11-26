@@ -110,25 +110,36 @@ models:
 
   - name: dim_distribution_center
     description: Dimension table for distribution centers.
+    config:
+      contract:
+        enforced: true
     columns:
       - name: distribution_center_id
         description: Unique identifier for each distribution center.
+        data_type: integer
+        constraints:
+          - type: unique
         data_tests:
           - not_null
           - unique
       - name: name
         description: Name of the distribution center.
+        data_type: string
         data_tests:
           - not_null
           - unique
       - name: latitude
         description: Latitude coordinate of the distribution center.
+        data_type: float
       - name: longitude
         description: Longitude coordinate of the distribution center.
+        data_type: float
       - name: localization_point
         description: Geography localization point of the distribution center.
+        data_type: geography
       - name: ingested_at
         description: Timestamp indicating when the record was ingested.
+        data_type: timestamp
 
   - name: dim_website_event
     description: Dimension table for user interaction on e-commerce website.
