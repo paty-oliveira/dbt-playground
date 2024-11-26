@@ -48,5 +48,5 @@ models:
     marts:
       +schema: marts
 
-on-run-end:
-  - "{{ dq_tools.store_test_results(results) }}"
+# on-run-end:
+#   - "{{ dq_tools.store_test_results(results) }}"

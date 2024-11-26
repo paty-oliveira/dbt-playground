@@ -3,44 +3,66 @@ version: 2
 models:
   - name: dim_user
     description: Dimension table for customers.
+    config:
+      contract:
+        enforced: true
     columns:
       - name: user_id
         description: Unique identifier for each user.
+        data_type: integer
+        constraints:
+          - type: unique
         data_tests:
           - not_null
           - unique
       - name: first_name
         description: First name of the user.
+        data_type: string
       - name: last_name
         description: Last name of the user.
+        data_type: string
       - name: age
         description: Age of the user.
+        data_type: integer
       - name: gender
         description: Gender of the user.
+        data_type: string
       - name: traffic_source
         description: Source of the traffic leading to the user.
+        data_type: string
       - name: email_address
         description: Email address of the user.
+        data_type: string
       - name: country
         description: Country where the user is located.
+        data_type: string
       - name: state
         description: State where the user is located.
+        data_type: string
       - name: city
         description: City where the user is lcoated.
+        data_type: string
       - name: street_address
         description: Street address of the user.
+        data_type: string
       - name: postal_code
         description: Postal code of the user.
+        data_type: string
       - name: latitude
         description: Latitude coordinate of the user.
+        data_type: float
       - name: longitude
         description: Longitude coordinate of the user.
+        data_type: float
       - name: localization_point
         description: Geography localization point of the user.
+        data_type: geography
       - name: user_created_at
         description: Timestamp indicating when the user account was created.
+        data_type: timestamp
       - name: ingested_at
         description: Timestamp indicating when the record was ingested.
+        data_type: timestamp
 
   - name: dim_product
     description: Dimension table for products.
