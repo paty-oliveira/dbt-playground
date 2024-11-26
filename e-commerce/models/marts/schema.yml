@@ -143,23 +143,32 @@ models:
 
   - name: dim_website_event
     description: Dimension table for user interaction on e-commerce website.
+    config:
+      contract:
+        enforced: true
     columns:
       - name: website_event_id
         description: Unique identifier for each event.
+        data_type: integer
+        constraints:
+          - type: unique
         data_tests:
           - not_null
           - unique
       - name: session_id
         description: Identifier for the session during which the event occured.
+        data_type: string
         data_tests:
           - not_null
-          - unique
       - name: user_id
         description: Identifier for the user associated with the event.
+        data_type: integer
       - name: event_sequence_number
         description: Sequence number of the event.
+        data_type: integer
       - name: event_type
         description: Type of event recorded.
+        data_type: string
         data_tests:
           - not_null
           - accepted_values:
@@ -167,30 +176,39 @@ models:
                 ["cancel", "cart", "department", "home", "product", "purchase"]
       - name: ip_address
         description: IP address from which the event originated.
+        data_type: string
       - name: browser
         description: Web browser used during the event
+        data_type: string
         data_tests:
           - not_null
           - accepted_values:
               values: ["Firefox", "Chrome", "Safari", "Other", "IE"]
       - name: traffic_source
         description: Source of the traffic leading to the event
+        data_type: string
         data_tests:
           - not_null
           - accepted_values:
               values: ["Adwords", "Email", "Facebook", "Organic", "YouTube"]
       - name: uri
         description: Uniform Resource Identifier assoaciated with the event.
+        data_type: string
       - name: city
         description: City where the event occurred.
+        data_type: string
       - name: state
         description: State where the event occurred.
+        data_type: string
       - name: postal_code
         description: Postal code of the event location.
+        data_type: string
       - name: created_at
         description: Timestamp indicating when the event took place.
+        data_type: timestamp
       - name: ingested_at
         description: Timestamp indicating when the record was ingested.
+        data_type: timestamp
 
   - name: fct_orders
     description: Fact table summarizing order-level metrics like total quantity, total order value, and so on.
