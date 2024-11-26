@@ -66,32 +66,47 @@ models:
 
   - name: dim_product
     description: Dimension table for products.
+    config:
+      contract:
+        enforced: true
     columns:
       - name: product_id
         description: Unique identifier for each product.
+        data_type: integer
+        constraints:
+          - type: unique
         data_tests:
           - not_null
           - unique
       - name: distribution_center_id
         description: Identifier for the distribution center associated with the product.
+        data_type: integer
       - name: product_sku
         description: Stock Keeping Unit of the product.
+        data_type: string
         data_tests:
           - not_null
       - name: product_category
         description: Category to which the product belongs.
+        data_type: string
       - name: product_department
         description: Department to which the product belongs.
+        data_type: string
       - name: product_name
         description: Name of the product.
+        data_type: string
       - name: product_brand
         description: Brand of the product.
+        data_type: string
       - name: product_retail_price
         description: Retail price of the product.
+        data_type: float
       - name: cost
         description: Cost of the product.
+        data_type: float
       - name: ingested_at
         description: Timestamp indicating when the record was ingested.
+        data_type: timestamp
 
   - name: dim_distribution_center
     description: Dimension table for distribution centers.
