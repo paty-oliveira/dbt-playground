@@ -263,28 +263,39 @@ models:
 
   - name: fct_order_items
     description: Fact table summarizing item-level metrics, with enriched product details.
+    config:
+      contract:
+        enforced: true
     columns:
       - name: order_item_id
         description: Unique identifier for each order item.
+        data_type: integer
+        constraints:
+          - type: unique
         data_tests:
           - unique
           - not_null
       - name: order_id
         description: Identifier for the associated order.
+        data_type: integer
         data_tests:
           - not_null
       - name: user_id
         description: Identifier for the user who placed the order.
+        data_type: integer
       - name: product_id
         description: Identifier for the associated product.
+        data_type: integer
         data_tests:
           - not_null
       - name: inventory_item_id
         description: Unique identifier for each inventory item.
+        data_type: integer
         data_tests:
           - not_null
       - name: status
         description: Status of the order item.
+        data_type: string
         data_tests:
           - not_null
           - accepted_values:
@@ -292,32 +303,45 @@ models:
                 ["Returned", "Processing", "Cancelled", "Shipped", "Complete"]
       - name: product_sale_price
         description: Price sale of the product.
+        data_type: float
       - name: product_sku
         description: Stock Keeping Unit of the product.
+        data_type: string
         data_tests:
           - not_null
       - name: product_category
         description: Category to which the product belongs.
+        data_type: string
       - name: product_department
         description: Department to which the product belongs.
+        data_type: string
       - name: product_name
         description: Name of the product.
+        data_type: string
       - name: product_brand
         description: Brand of the product.
+        data_type: string
       - name: product_cost
         description: Cost of the product.
+        data_type: float
       - name: total_inventory_items
         description: Total number of product items available in the inventory.
+        data_type: integer
       - name: created_at
         description: Timestamp indicating when the order item was created.
+        data_type: timestamp
       - name: shipped_at
         description: Timestamp indicating when the order item was shipped.
+        data_type: timestamp
       - name: delivered_at
         description: Timestamp indicating when the order item was delivered.
+        data_type: timestamp
       - name: returned_at
         description: Timestamp indicating when the order item was returned.
+        data_type: timestamp
       - name: ingested_at
         description: Timestamp indicating when the record was ingested.
+        data_type: timestamp
 
   - name: fct_inventory_products
     description: Fact table which Links inventory information for each product.
