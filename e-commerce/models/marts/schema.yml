@@ -345,38 +345,57 @@ models:
 
   - name: fct_inventory_products
     description: Fact table which Links inventory information for each product.
+    config:
+      contract:
+        enforced: true
     columns:
       - name: product_id
         description: Identifier for the associated product.
+        data_type: integer
+        constraints:
+          - type: unique
         data_tests:
           - not_null
           - unique
       - name: distribution_center_id
         description: Unique identifier for each distribution center.
+        data_type: integer
       - name: product_sku
         description: Stock Keeping Unit of the product.
+        data_type: string
         data_tests:
           - not_null
           - unique
       - name: product_category
         description: Category of the associated product.
+        data_type: string
       - name: product_name
         description: Name of the associated product.
+        data_type: string
       - name: product_brand
         description: Brand of the associated product.
+        data_type: string
       - name: product_department
         description: Department to which the product belongs.
+        data_type: string
       - name: product_sale_price
         description: Retail price of the associated product.
+        data_type: float
       - name: product_cost
         description: Cost of the product.
+        data_type: float
       - name: total_products_available
         description: Total number of product items available in the inventory.
+        data_type: integer
       - name: created_at
         description: Timestamp indicating when the product was created for the first time in the system.
+        data_type: timestamp
       - name: sold_at
         description: Timestamp indicating when the product was sold.
+        data_type: timestamp
       - name: is_product_available
         description: Clarifies if the product is available in the inventory.
+        data_type: boolean
       - name: ingested_at
         description: Timestamp indicating when the record was ingested.
+        data_type: timestamp
