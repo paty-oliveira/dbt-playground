@@ -1,0 +1,24 @@
+semantic_models:
+  - name: products
+    description: Product dimension table. This table contains one row per product.
+    model: ref('dim_product')
+
+    entities:
+      - name: product
+        type: primary
+        expr: product_id
+      - name: distribution_center
+        type: foreign
+        expr: distribution_center_id
+
+    dimensions:
+      - name: category
+        type: categorical
+        expr: product_category
+      - name: department
+        type: categorical
+        expr: product_department
+      - name: brand
+        type: categorical
+        expr: product_categorical
+
