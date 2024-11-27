@@ -3,115 +3,172 @@ version: 2
 models:
   - name: dim_user
     description: Dimension table for customers.
+    config:
+      contract:
+        enforced: true
     columns:
       - name: user_id
         description: Unique identifier for each user.
+        data_type: integer
+        constraints:
+          - type: unique
         data_tests:
           - not_null
           - unique
       - name: first_name
         description: First name of the user.
+        data_type: string
       - name: last_name
         description: Last name of the user.
+        data_type: string
       - name: age
         description: Age of the user.
+        data_type: integer
       - name: gender
         description: Gender of the user.
+        data_type: string
       - name: traffic_source
         description: Source of the traffic leading to the user.
+        data_type: string
       - name: email_address
         description: Email address of the user.
+        data_type: string
       - name: country
         description: Country where the user is located.
+        data_type: string
       - name: state
         description: State where the user is located.
+        data_type: string
       - name: city
         description: City where the user is lcoated.
+        data_type: string
       - name: street_address
         description: Street address of the user.
+        data_type: string
       - name: postal_code
         description: Postal code of the user.
+        data_type: string
       - name: latitude
         description: Latitude coordinate of the user.
+        data_type: float
       - name: longitude
         description: Longitude coordinate of the user.
+        data_type: float
       - name: localization_point
         description: Geography localization point of the user.
+        data_type: geography
       - name: user_created_at
         description: Timestamp indicating when the user account was created.
+        data_type: timestamp
       - name: ingested_at
         description: Timestamp indicating when the record was ingested.
+        data_type: timestamp
 
   - name: dim_product
     description: Dimension table for products.
+    config:
+      contract:
+        enforced: true
     columns:
       - name: product_id
         description: Unique identifier for each product.
+        data_type: integer
+        constraints:
+          - type: unique
         data_tests:
           - not_null
           - unique
       - name: distribution_center_id
         description: Identifier for the distribution center associated with the product.
+        data_type: integer
       - name: product_sku
         description: Stock Keeping Unit of the product.
+        data_type: string
         data_tests:
           - not_null
       - name: product_category
         description: Category to which the product belongs.
+        data_type: string
       - name: product_department
         description: Department to which the product belongs.
+        data_type: string
       - name: product_name
         description: Name of the product.
+        data_type: string
       - name: product_brand
         description: Brand of the product.
+        data_type: string
       - name: product_retail_price
         description: Retail price of the product.
+        data_type: float
       - name: cost
         description: Cost of the product.
+        data_type: float
       - name: ingested_at
         description: Timestamp indicating when the record was ingested.
+        data_type: timestamp
 
   - name: dim_distribution_center
     description: Dimension table for distribution centers.
+    config:
+      contract:
+        enforced: true
     columns:
       - name: distribution_center_id
         description: Unique identifier for each distribution center.
+        data_type: integer
+        constraints:
+          - type: unique
         data_tests:
           - not_null
           - unique
       - name: name
         description: Name of the distribution center.
+        data_type: string
         data_tests:
           - not_null
           - unique
       - name: latitude
         description: Latitude coordinate of the distribution center.
+        data_type: float
       - name: longitude
         description: Longitude coordinate of the distribution center.
+        data_type: float
       - name: localization_point
         description: Geography localization point of the distribution center.
+        data_type: geography
       - name: ingested_at
         description: Timestamp indicating when the record was ingested.
+        data_type: timestamp
 
   - name: dim_website_event
     description: Dimension table for user interaction on e-commerce website.
+    config:
+      contract:
+        enforced: true
     columns:
       - name: website_event_id
         description: Unique identifier for each event.
+        data_type: integer
+        constraints:
+          - type: unique
         data_tests:
           - not_null
           - unique
       - name: session_id
         description: Identifier for the session during which the event occured.
+        data_type: string
         data_tests:
           - not_null
-          - unique
       - name: user_id
         description: Identifier for the user associated with the event.
+        data_type: integer
       - name: event_sequence_number
         description: Sequence number of the event.
+        data_type: integer
       - name: event_type
         description: Type of event recorded.
+        data_type: string
         data_tests:
           - not_null
           - accepted_values:
@@ -119,43 +176,60 @@ models:
                 ["cancel", "cart", "department", "home", "product", "purchase"]
       - name: ip_address
         description: IP address from which the event originated.
+        data_type: string
       - name: browser
         description: Web browser used during the event
+        data_type: string
         data_tests:
           - not_null
           - accepted_values:
               values: ["Firefox", "Chrome", "Safari", "Other", "IE"]
       - name: traffic_source
         description: Source of the traffic leading to the event
+        data_type: string
         data_tests:
           - not_null
           - accepted_values:
               values: ["Adwords", "Email", "Facebook", "Organic", "YouTube"]
       - name: uri
         description: Uniform Resource Identifier assoaciated with the event.
+        data_type: string
       - name: city
         description: City where the event occurred.
+        data_type: string
       - name: state
         description: State where the event occurred.
+        data_type: string
       - name: postal_code
         description: Postal code of the event location.
+        data_type: string
       - name: created_at
         description: Timestamp indicating when the event took place.
+        data_type: timestamp
       - name: ingested_at
         description: Timestamp indicating when the record was ingested.
+        data_type: timestamp
 
   - name: fct_orders
     description: Fact table summarizing order-level metrics like total quantity, total order value, and so on.
+    config:
+      contract:
+        enforced: true
     columns:
       - name: order_id
         description: Identifier for the associated order.
+        data_type: integer
+        constraints:
+          - type: unique
         data_tests:
           - not_null
           - unique
       - name: user_id
         description: Identifier for the user who placed the order.
+        data_type: integer
       - name: status
         description: Status of the order.
+        data_type: string
         data_tests:
           - not_null
           - accepted_values:
@@ -163,47 +237,65 @@ models:
                 ["Shipped", "Complete", "Returned", "Cancelled", "Processing"]
       - name: total_quantity
         description: Total number of items in the order.
+        data_type: integer
         data_tests:
           - not_null
       - name: created_at
         description: Timestamp indicating when the order was created.
+        data_type: timestamp
         data_tests:
           - not_null
       - name: shipped_at
         description: Timestamp indicating when the order was shipped.
+        data_type: timestamp
       - name: delivered_at
         description: Timestamp indicating when the order was delivered.
+        data_type: timestamp
       - name: returned_at
         description: Timestamp indicating when the order item was returned.
+        data_type: timestamp
       - name: total_order_value
         description: Monetary sum for the order.
+        data_type: float
       - name: ingested_at
         description: Timestamp indicating when the record was ingested.
+        data_type: timestamp
 
   - name: fct_order_items
     description: Fact table summarizing item-level metrics, with enriched product details.
+    config:
+      contract:
+        enforced: true
     columns:
       - name: order_item_id
         description: Unique identifier for each order item.
+        data_type: integer
+        constraints:
+          - type: unique
         data_tests:
           - unique
           - not_null
       - name: order_id
         description: Identifier for the associated order.
+        data_type: integer
         data_tests:
           - not_null
       - name: user_id
         description: Identifier for the user who placed the order.
+        data_type: integer
       - name: product_id
         description: Identifier for the associated product.
+        data_type: integer
         data_tests:
           - not_null
       - name: inventory_item_id
         description: Unique identifier for each inventory item.
+        data_type: integer
         data_tests:
           - not_null
       - name: status
         description: Status of the order item.
+        data_type: string
         data_tests:
           - not_null
           - accepted_values:
@@ -211,67 +303,99 @@ models:
                 ["Returned", "Processing", "Cancelled", "Shipped", "Complete"]
       - name: product_sale_price
         description: Price sale of the product.
+        data_type: float
       - name: product_sku
         description: Stock Keeping Unit of the product.
+        data_type: string
         data_tests:
           - not_null
       - name: product_category
         description: Category to which the product belongs.
+        data_type: string
       - name: product_department
         description: Department to which the product belongs.
+        data_type: string
       - name: product_name
         description: Name of the product.
+        data_type: string
       - name: product_brand
         description: Brand of the product.
+        data_type: string
       - name: product_cost
         description: Cost of the product.
+        data_type: float
       - name: total_inventory_items
         description: Total number of product items available in the inventory.
+        data_type: integer
       - name: created_at
         description: Timestamp indicating when the order item was created.
+        data_type: timestamp
       - name: shipped_at
         description: Timestamp indicating when the order item was shipped.
+        data_type: timestamp
       - name: delivered_at
         description: Timestamp indicating when the order item was delivered.
+        data_type: timestamp
       - name: returned_at
         description: Timestamp indicating when the order item was returned.
+        data_type: timestamp
       - name: ingested_at
         description: Timestamp indicating when the record was ingested.
+        data_type: timestamp
 
   - name: fct_inventory_products
     description: Fact table which Links inventory information for each product.
+    config:
+      contract:
+        enforced: true
     columns:
       - name: product_id
         description: Identifier for the associated product.
+        data_type: integer
+        constraints:
+          - type: unique
         data_tests:
           - not_null
           - unique
       - name: distribution_center_id
         description: Unique identifier for each distribution center.
+        data_type: integer
       - name: product_sku
         description: Stock Keeping Unit of the product.
+        data_type: string
         data_tests:
           - not_null
           - unique
       - name: product_category
         description: Category of the associated product.
+        data_type: string
       - name: product_name
         description: Name of the associated product.
+        data_type: string
       - name: product_brand
         description: Brand of the associated product.
+        data_type: string
       - name: product_department
         description: Department to which the product belongs.
+        data_type: string
       - name: product_sale_price
         description: Retail price of the associated product.
+        data_type: float
       - name: product_cost
         description: Cost of the product.
+        data_type: float
       - name: total_products_available
         description: Total number of product items available in the inventory.
+        data_type: integer
       - name: created_at
         description: Timestamp indicating when the product was created for the first time in the system.
+        data_type: timestamp
       - name: sold_at
         description: Timestamp indicating when the product was sold.
+        data_type: timestamp
       - name: is_product_available
         description: Clarifies if the product is available in the inventory.
+        data_type: boolean
       - name: ingested_at
         description: Timestamp indicating when the record was ingested.
+        data_type: timestamp
