@@ -48,5 +48,10 @@ models:
     marts:
       +schema: marts
 
+snapshots:
+  the_look_dw:
+    products:
+      +target_schema: snapshots
+
 # on-run-end:
 #   - "{{ dq_tools.store_test_results(results) }}"
